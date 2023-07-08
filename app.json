@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FullStack-HY-k2023-osa10-rate-repository-app",
-    "slug": "FullStack-HY-k2023-osa10-rate-repository-app",
+    "name": "github-repository-rater",
+    "slug": "github-repository-rater",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
