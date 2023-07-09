@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 import Text from "./Text";
 import RepositoryItemHeader from "./RepositoryItemHeader";
-import RepositoryItemContent from "./RepositoryItemContent";
+// import RepositoryItemContent from "./RepositoryItemContent";
 import RepositoryItemFooter from "./RepositoryItemFooter";
 
 // https://reactnative.dev/docs/flatlist?language=javascript
@@ -50,11 +50,12 @@ const RepositoryItem = (props) => {
   return (
     <View style={styles.item}>
       <RepositoryItemHeader
-        ownerAvatarUrl={repo.ownerAvatarUrl}
+        avatarUrl={repo.ownerAvatarUrl}
         fullName={fullName}
         description={description}
+        language={language}
       />
-      <RepositoryItemContent language={language} />
+      {/* <RepositoryItemContent language={language} /> */}
       <RepositoryItemFooter
         stars={stargazersCount}
         forks={forksCount}

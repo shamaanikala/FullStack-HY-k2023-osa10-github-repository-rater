@@ -13,10 +13,10 @@ const styles = StyleSheet.create({
 });
 
 
-const RepositoryItemContent = () => {
+const RepositoryItemContent = ({ language }) => {
   return (
     <View style={styles.container}>
-      <Text>Repository item content</Text>
+      <Text>{language}</Text>
     </View>
   );
 };
