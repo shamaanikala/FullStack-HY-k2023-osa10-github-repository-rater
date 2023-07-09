@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { StyleSheet, View } from "react-native";
 import Text from "./Text";
 import RepositoryItemHeader from "./RepositoryItemHeader";
@@ -52,9 +51,16 @@ const RepositoryItem = (props) => {
     <View style={styles.item}>
       <RepositoryItemHeader
         ownerAvatarUrl={repo.ownerAvatarUrl}
+        fullName={fullName}
+        description={description}
       />
-      <RepositoryItemContent />
-      <RepositoryItemFooter />
+      <RepositoryItemContent language={language} />
+      <RepositoryItemFooter
+        stars={stargazersCount}
+        forks={forksCount}
+        reviews={reviewCount}
+        rating={ratingAverage}
+      />
       {Object.entries(repo)
         .filter(v => !Object.keys(rest).includes(v[0]))
         .map((v, i) =>
