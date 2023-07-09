@@ -32,8 +32,7 @@ const repoStrings = {
 
 const RepositoryItem = (props) => {
   const repo = props.item;
-  console.log(repo);
-
+  // console.log(repo);
 
   const {
     fullName,
@@ -45,11 +44,16 @@ const RepositoryItem = (props) => {
     ratingAverage,
     ...rest
   } = repo;
-  console.log(rest);
+
+  // console.log(rest);
   // Object.entries() will return a array of [key, value] "tuples"
   return (
     <View style={styles.item}>
-      {Object.entries(repo).map((v, i) => <Text key={i}>{repoStrings[v[0]]}: {v[1]}</Text>)}
+      {Object.entries(repo)
+        .filter(v => !Object.keys(rest).includes(v[0]))
+        .map((v, i) =>
+          <Text key={i}>{repoStrings[v[0]]}: {v[1]}</Text>
+        )}
     </View>
   );
 };
