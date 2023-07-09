@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: 'ivory',
     // padding: 20,
-    marginVertical: 5,
+    // marginVertical: 5,
     // marginHorizontal: 16
   },
 });

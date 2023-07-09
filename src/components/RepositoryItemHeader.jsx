@@ -7,27 +7,28 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexDirection: 'row',
     backgroundColor: 'ivory',
-    padding: 25,
-    marginVertical: 8,
-    // marginHorizontal: 16,
+    paddingVertical: 15,
+    paddingStart: 20,
+    marginVertical: 5,
   },
   avatarContainer: {
 
   },
   headerContentContainer: {
-    backgroundColor: 'lightblue',
-    // paddingTop: 5,
-    marginLeft: 10,
+    marginHorizontal: 15,
+    paddingHorizontal: 15,
     alignItems: 'flex-start',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
   },
   itemTitle: {
     fontWeight: theme.fontWeights.bold,
-    fontSize: theme.fontSizes.repoTitle,
+    fontSize: theme.fontSizes.heading,
   },
   itemDescription: {
-    fontSize: theme.fontSizes.repoTitle - 2,
+    fontSize: theme.fontSizes.heading - 2,
     color: theme.colors.textSecondary,
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
   },
   ownerAvatar: {
     width: 50,
@@ -52,7 +53,12 @@ const RepositoryItemHeader = ({ avatarUrl, fullName, description, language }) =>
         />
       </View>
       <View style={styles.headerContentContainer}>
-        <Text style={styles.itemTitle}>{fullName}</Text>
+        <Text
+          fontSize="heading"
+          fontWeight="bold"
+        >
+          {fullName}
+        </Text>
         <Text style={styles.itemDescription}>{description}</Text>
         <Text style={styles.language}>{language}</Text>
       </View>

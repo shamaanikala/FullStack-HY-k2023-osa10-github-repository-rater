@@ -14,7 +14,7 @@ const theme = {
     body: 14,
     subheading: 16,
     header: 28,
-    repoTitle: 20,
+    heading: 20,
   },
   fonts: {
     main: 'System',

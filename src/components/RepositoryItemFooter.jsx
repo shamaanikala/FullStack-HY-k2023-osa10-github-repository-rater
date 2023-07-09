@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: 'lightgray',
+    // backgroundColor: 'lightgray',
     padding: 10,
     marginVertical: 5,
     marginHorizontal: 16
