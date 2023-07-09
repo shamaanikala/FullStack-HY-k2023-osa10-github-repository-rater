@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import Text from "./Text";
 
 // https://reactnative.dev/docs/flatlist?language=javascript
@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16
+  },
+  ownerAvatar: {
+    width: 50,
+    height: 50,
   },
 });
 
@@ -31,7 +35,7 @@ const repoStrings = {
 
 const RepositoryItem = (props) => {
   const repo = props.item;
-  // console.log(repo);
+  console.log(repo);
 
   const {
     fullName,
@@ -48,6 +52,10 @@ const RepositoryItem = (props) => {
   // Object.entries() will return a array of [key, value] "tuples"
   return (
     <View style={styles.item}>
+      <Image
+        style={styles.ownerAvatar}
+        source={{ uri: repo.ownerAvatarUrl, }}
+      />
       {Object.entries(repo)
         .filter(v => !Object.keys(rest).includes(v[0]))
         .map((v, i) =>
