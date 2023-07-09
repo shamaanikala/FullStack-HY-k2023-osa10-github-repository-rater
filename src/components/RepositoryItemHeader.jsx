@@ -10,22 +10,15 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingStart: 20,
     marginVertical: 5,
-    // backgroundColor: 'grey',
   },
-  avatarContainer: {
-
-  },
+  avatarContainer: {},
   headerContentContainer: {
     marginHorizontal: 15,
     paddingHorizontal: 15,
     alignItems: 'flex-start',
-    // flexWrap: 'wrap',
   },
   itemDescription: {
     fontSize: theme.fontSizes.heading - 2,
-    color: theme.colors.textSecondary,
-    alignItems: 'flex-start',
-    flexWrap: 'wrap',
   },
   ownerAvatar: {
     width: 50,
@@ -50,13 +43,10 @@ const RepositoryItemHeader = ({ avatarUrl, fullName, description, language }) =>
         />
       </View>
       <View style={styles.headerContentContainer}>
-        <Text
-          fontSize="heading"
-          fontWeight="bold"
-        >
+        <Text fontSize="heading" fontWeight="bold">
           {fullName}
         </Text>
-        <Text style={styles.itemDescription}>{description}</Text>
+        <Text color="textSecondary" style={styles.itemDescription}>{description}</Text>
         <Text style={styles.language}>{language}</Text>
       </View>
     </View>
