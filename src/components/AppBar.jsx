@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import Constants from 'expo-constants';
 import Text from "./Text";
 import theme from "../theme";
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.appBarPrimary,
     // backgroundColor: 'black',
     height: '15%',
-    opacity: 0.85,
+    opacity: 0.95, // 0.95 with material example color, 0.85
   },
   header: {
     fontSize: theme.fontSizes.header,
@@ -24,7 +24,9 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Repositories</Text>
+      <Pressable onPress={() => console.log('AppBar tab pressed!')}>
+        <Text style={styles.header}>Repositories</Text>
+      </Pressable>
     </View>
   );
 };

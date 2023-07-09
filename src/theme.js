@@ -6,7 +6,8 @@ const theme = {
     // appBarPrimary: 'midnightblue', //'#191970', //midnightblue',
     // appBarPrimary: 'darkolivegreen',
     // appBarPrimary: 'darkslategrey',
-    appBarPrimary: '#003',
+    // appBarPrimary: '#003',
+    appBarPrimary: '#24292e', // example colour from material
     appBarSecondary: 'snow',
   },
   fontSizes: {
