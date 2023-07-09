@@ -1,7 +1,7 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import Constants from 'expo-constants';
 import theme from "../theme";
-import { useState } from "react";
+// import { useState } from "react";
 import AppBarTab from "./AppBarTab";
 
 const styles = StyleSheet.create({
@@ -14,16 +14,19 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  const [presses, setPresses] = useState(0);
+  // const [presses, setPresses] = useState(0);
 
   const handlePress = () => {
-    setPresses(presses + 1);
-    console.log(`AppBar tab pressed! (${presses})`)
-  }
+    // setPresses(presses + 1);
+    // console.log(`AppBar tab pressed! (${presses})`);
+    console.log('AppBarTab pressed!');
+  };
+
   return (
     <View style={styles.container}>
       <Pressable onPress={handlePress}>
-        <AppBarTab title={`Repositories ${presses}`} />
+        {/* <AppBarTab title={`Repositories ${presses}`} /> */}
+        <AppBarTab title="Repositories" />
       </Pressable>
     </View>
   );
