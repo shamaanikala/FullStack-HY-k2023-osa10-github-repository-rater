@@ -1,6 +1,7 @@
 import { View, StyleSheet } from "react-native"
 import Text from "./Text"
 import theme from "../theme";
+import { truncateNumber } from "../utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -31,9 +32,10 @@ const styles = StyleSheet.create({
 });
 
 const FooterInfoItem = ({ value, label }) => {
+  const renderValue = truncateNumber(value);
   return (
     <View style={styles.infoItemContainer}>
-      <Text style={styles.infoItemValue}>{value}</Text>
+      <Text style={styles.infoItemValue}>{renderValue}</Text>
       <Text style={styles.infoItemLabel}>{label}</Text>
     </View>
   );
