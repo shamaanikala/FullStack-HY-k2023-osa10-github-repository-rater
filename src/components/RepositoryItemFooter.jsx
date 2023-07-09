@@ -12,10 +12,22 @@ const styles = StyleSheet.create({
   },
 });
 
+const FooterInfoItem = ({ value, label }) => {
+  return (
+    <View>
+      <Text>{value}</Text>
+      <Text>{label}</Text>
+    </View>
+  );
+};
+
 const RepositoryItemFooter = () => {
   return (
     <View style={styles.container}>
-      <Text>Repository item footer</Text>
+      <FooterInfoItem label="Stars" value='0' />
+      <FooterInfoItem label="Forks" value='0' />
+      <FooterInfoItem label="Reviews" value='0' />
+      <FooterInfoItem label="Rating" value='0' />
     </View>
   );
 };
