@@ -2,6 +2,8 @@
 import { StyleSheet, View } from "react-native";
 import Text from "./Text";
 import RepositoryItemHeader from "./RepositoryItemHeader";
+import RepositoryItemContent from "./RepositoryItemContent";
+import RepositoryItemFooter from "./RepositoryItemFooter";
 
 // https://reactnative.dev/docs/flatlist?language=javascript
 const styles = StyleSheet.create({
@@ -51,6 +53,8 @@ const RepositoryItem = (props) => {
       <RepositoryItemHeader
         ownerAvatarUrl={repo.ownerAvatarUrl}
       />
+      <RepositoryItemContent />
+      <RepositoryItemFooter />
       {Object.entries(repo)
         .filter(v => !Object.keys(rest).includes(v[0]))
         .map((v, i) =>
