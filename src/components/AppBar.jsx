@@ -1,5 +1,6 @@
 import { View, StyleSheet } from "react-native";
 import Constants from 'expo-constants';
+import Text from "./Text";
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +11,9 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  return <View style={styles.container}>{/* ... */}</View>;
+  return <View style={styles.container}>
+    <Text fontSize="subheading">Repositories</Text>
+  </View>;
 };
 
 export default AppBar;
