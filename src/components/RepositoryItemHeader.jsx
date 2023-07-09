@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingStart: 20,
     marginVertical: 5,
+    // backgroundColor: 'grey',
   },
   avatarContainer: {
 
@@ -19,10 +20,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     alignItems: 'flex-start',
     // flexWrap: 'wrap',
-  },
-  itemTitle: {
-    fontWeight: theme.fontWeights.bold,
-    fontSize: theme.fontSizes.heading,
   },
   itemDescription: {
     fontSize: theme.fontSizes.heading - 2,
@@ -39,7 +36,7 @@ const styles = StyleSheet.create({
     color: theme.colors.appBarSecondary,
     borderRadius: 3,
     padding: 5,
-    marginTop: 5,
+    marginTop: 15,
   }
 });
 

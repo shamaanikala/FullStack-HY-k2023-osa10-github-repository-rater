@@ -1,6 +1,5 @@
 import { View, StyleSheet } from "react-native"
 import Text from "./Text"
-import theme from "../theme";
 import { truncateNumber } from "../utils";
 
 const styles = StyleSheet.create({
@@ -9,25 +8,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     // backgroundColor: 'lightgray',
-    padding: 10,
-    marginVertical: 5,
+    // padding: 10,
+    marginBottom: 15,
     marginHorizontal: 16
   },
   infoItemContainer: {
     justifyContent: 'center',
     backgroundColor: 'ivory',
-    borderStyle: 'solid',
     minWidth: 55,
     // height: 55,
     aspectRatio: 1,
   },
   infoItemValue: {
     textAlign: 'center',
-    fontWeight: theme.fontWeights.bold,
   },
   infoItemLabel: {
     textAlign: 'center',
-    color: theme.colors.textPrimary,
   }
 });
 
@@ -35,8 +31,16 @@ const FooterInfoItem = ({ value, label }) => {
   const renderValue = truncateNumber(value);
   return (
     <View style={styles.infoItemContainer}>
-      <Text style={styles.infoItemValue}>{renderValue}</Text>
-      <Text style={styles.infoItemLabel}>{label}</Text>
+      <Text
+        fontWeight="bold"
+        fontSize="subheading"
+        style={styles.infoItemValue}
+      >{renderValue}</Text>
+      <Text
+        fontSize="subheading"
+        color="textPrimary"
+        style={styles.infoItemLabel}
+      >{label}</Text>
     </View>
   );
 };
