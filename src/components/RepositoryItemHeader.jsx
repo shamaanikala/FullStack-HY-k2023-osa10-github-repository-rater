@@ -6,10 +6,10 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexGrow: 1,
     flexDirection: 'row',
-    backgroundColor: 'lightgray',
-    padding: 20,
+    backgroundColor: 'ivory',
+    padding: 25,
     marginVertical: 8,
-    marginHorizontal: 16,
+    // marginHorizontal: 16,
   },
   avatarContainer: {
 
