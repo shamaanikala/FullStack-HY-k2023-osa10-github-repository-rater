@@ -13,21 +13,43 @@ const styles = StyleSheet.create({
   },
 });
 
+/**
+ * repoStrings object
+ * 
+ * Contains the strings that will be rendered
+ * as keys to the repository values within
+ * <FlatLine> renderItems.
+ */
+const repoStrings = {
+  fullName: 'Full name',
+  description: 'Description',
+  language: 'Language',
+  stargazersCount: 'Stars',
+  forksCount: 'Forks',
+  reviewCount: 'Reviews',
+  ratingAverage: 'Rating',
+}
+
 const RepositoryItem = (props) => {
   const repo = props.item;
   console.log(repo);
+
+
   const {
     fullName,
     description,
     language,
-    stargazerCount,
+    stargazersCount,
     forksCount,
     reviewCount,
-    ratingAverage
+    ratingAverage,
+    ...rest
   } = repo;
+  console.log(rest);
+  // Object.entries() will return a array of [key, value] "tuples"
   return (
     <View style={styles.item}>
-      {Object.values(repo).map((v, i) => <Text key={i}>{v}</Text>)}
+      {Object.entries(repo).map((v, i) => <Text key={i}>{repoStrings[v[0]]}: {v[1]}</Text>)}
     </View>
   );
 };
