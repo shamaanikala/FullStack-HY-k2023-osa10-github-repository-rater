@@ -1,6 +1,6 @@
 /**
  * Auxiliary function to truncateNumber.
- * Divides the given value by 10*zero and reformats
+ * Divides the given value by 10**zeros and reformats
  * the value to a format with a suffix representing
  * order of magnitude. Example 1234 -> 1.2k.
  * @param {number} value - Value that is formatted.
