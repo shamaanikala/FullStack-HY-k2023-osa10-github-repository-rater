@@ -7,8 +7,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    // backgroundColor: 'lightgray',
-    // padding: 10,
     marginBottom: 15,
     marginHorizontal: 16
   },
@@ -16,7 +14,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'ivory',
     minWidth: 55,
-    // height: 55,
     aspectRatio: 1,
   },
   infoItemValue: {
@@ -35,7 +32,9 @@ const FooterInfoItem = ({ value, label }) => {
         fontWeight="bold"
         fontSize="subheading"
         style={styles.infoItemValue}
-      >{renderValue}</Text>
+      >
+        {renderValue}
+      </Text>
       <Text
         fontSize="subheading"
         color="textPrimary"
