@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { StyleSheet, View } from "react-native";
 import Text from "./Text";
 
@@ -8,9 +9,6 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16
-  },
-  title: {
-    fontSize: 32,
   },
 });
 
