@@ -4,8 +4,6 @@ import theme from "../theme";
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: theme.fontSizes.header,
-    fontWeight: theme.fontWeights.bold,
     color: theme.colors.appBarSecondary,
     paddingStart: '5%',
     paddingTop: '7%',
@@ -14,7 +12,11 @@ const styles = StyleSheet.create({
 
 const AppBarTab = ({ title }) => {
   return (
-    <Text style={styles.title}>
+    <Text
+      fontSize="header"
+      fontWeight="bold"
+      style={styles.title}
+    >
       {title}
     </Text>
   );

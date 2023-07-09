@@ -1,6 +1,5 @@
 import { StyleSheet, View } from 'react-native';
 import RepositoryList from './RepositoryList';
-// import Text from './Text';
 import AppBar from './AppBar';
 
 const styles = StyleSheet.create({
@@ -16,7 +15,6 @@ const Main = () => {
     <>
       <AppBar />
       <View style={styles.container}>
-        {/* <Text>Rate Repository Application</Text> */}
         <RepositoryList />
       </View>
     </>
