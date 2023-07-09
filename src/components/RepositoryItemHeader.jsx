@@ -47,7 +47,7 @@ const RepositoryItemHeader = ({ avatarUrl, fullName, description, language }) =>
           {fullName}
         </Text>
         <Text color="textSecondary" style={styles.itemDescription}>{description}</Text>
-        <Text style={styles.language}>{language}</Text>
+        <Text fontSize="subheading" style={styles.language}>{language}</Text>
       </View>
     </View>
   )
