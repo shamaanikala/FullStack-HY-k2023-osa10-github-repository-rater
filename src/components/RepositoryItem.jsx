@@ -14,11 +14,20 @@ const styles = StyleSheet.create({
 });
 
 const RepositoryItem = (props) => {
+  const repo = props.item;
+  console.log(repo);
+  const {
+    fullName,
+    description,
+    language,
+    stargazerCount,
+    forksCount,
+    reviewCount,
+    ratingAverage
+  } = repo;
   return (
     <View style={styles.item}>
-      <Text style={styles.title}>
-        Full name: {props.item.fullName}
-      </Text>
+      {Object.values(repo).map((v, i) => <Text key={i}>{v}</Text>)}
     </View>
   );
 };
