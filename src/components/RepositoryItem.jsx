@@ -1,4 +1,5 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
+import Text from "./Text";
 
 // https://reactnative.dev/docs/flatlist?language=javascript
 const styles = StyleSheet.create({
