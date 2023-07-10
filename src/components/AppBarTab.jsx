@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
   title: {
     color: theme.colors.appBarSecondary,
     paddingStart: '5%',
-    // paddingTop: '7%',
     paddingEnd: '5%',
     marginHorizontal: 7,
     // backgroundColor: 'pink',

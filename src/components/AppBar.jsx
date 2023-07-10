@@ -17,12 +17,7 @@ const styles = StyleSheet.create({
   },
   scrollview: {
     paddingTop: Constants.statusBarHeight,
-    // height: '15%',
-    // flexDirection: 'row',
     // backgroundColor: 'blue',
-    // flex: 1,
-    // justifyContent: 'flex-start',
-    // marginHorizontal: 20,
   },
 });
 
@@ -46,10 +41,6 @@ const AppBar = () => {
         <Link to="/signin">
           <AppBarTab title="Sign In" />
         </Link>
-        <AppBarTab title="Dummy" />
-        <AppBarTab title="Dummy" />
-        <AppBarTab title="Dummy" />
-        <AppBarTab title="Dummy" />
       </ScrollView>
     </View>
   );
