@@ -2,6 +2,7 @@ import { View, StyleSheet, Button } from "react-native";
 import FormikTextInput from "./FormikTextInput";
 import { Formik } from "formik";
 import theme from "../theme";
+import * as yup from 'yup';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,6 +43,18 @@ const SignInForm = ({ onSubmit }) => {
 
 const initialValues = { username: '', password: '' };
 
+const MINIMUN_USERNAME_LENGTH = 3;
+
+const validationSchema = yup.object().shape({
+  username: yup
+    .string()
+    .min(MINIMUN_USERNAME_LENGTH, `Username must be at least ${MINIMUN_USERNAME_LENGTH} characters!`)
+    .required('Username is required to sign in'),
+  password: yup
+    .string()
+    .required('Password is required to sign in'),
+});
+
 const SignIn = () => {
   const onSubmit = (values) => {
     console.log(values);
@@ -49,7 +62,11 @@ const SignIn = () => {
 
   return (
     <View style={styles.container}>
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
         {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
       </Formik>
     </View>
