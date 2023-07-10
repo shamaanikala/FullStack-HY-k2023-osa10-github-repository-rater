@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.appBarPrimary,
     height: '15%',
     opacity: 0.95, // 0.95 with material example color, 0.85
+    flexGrow: 1,
+    flexDirection: 'row',
   },
 });
 
@@ -28,6 +30,7 @@ const AppBar = () => {
         {/* <AppBarTab title={`Repositories ${presses}`} /> */}
         <AppBarTab title="Repositories" />
       </Pressable>
+      <AppBarTab title="Sign In" />
     </View>
   );
 };
