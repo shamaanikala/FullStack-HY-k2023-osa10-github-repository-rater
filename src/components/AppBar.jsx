@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     opacity: 0.95, // 0.95 with material example color, 0.85
     flexGrow: 1,
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 

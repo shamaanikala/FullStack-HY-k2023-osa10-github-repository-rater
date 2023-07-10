@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     color: theme.colors.appBarSecondary,
     paddingStart: '5%',
     paddingTop: '7%',
+    paddingEnd: '5%',
   },
 });
 
