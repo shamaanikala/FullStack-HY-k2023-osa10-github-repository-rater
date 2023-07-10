@@ -12,8 +12,17 @@ const styles = StyleSheet.create({
     height: '15%',
     opacity: 0.95, // 0.95 with material example color, 0.85
     flexGrow: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    // flexDirection: 'row',
+    // justifyContent: 'space-between',
+  },
+  scrollview: {
+    paddingTop: Constants.statusBarHeight,
+    // height: '15%',
+    // flexDirection: 'row',
+    // backgroundColor: 'blue',
+    // flex: 1,
+    // justifyContent: 'flex-start',
+    // marginHorizontal: 20,
   },
 });
 
@@ -30,13 +39,17 @@ const AppBar = () => {
   // <Link> does not work if it has <Pressable> as child
   return (
     <View style={styles.container}>
-      <ScrollView horizontal>
+      <ScrollView contentContainerStyle={styles.scrollview} horizontal>
         <Link to="/">
           <AppBarTab title="Repositories" />
         </Link>
         <Link to="/signin">
           <AppBarTab title="Sign In" />
         </Link>
+        <AppBarTab title="Dummy" />
+        <AppBarTab title="Dummy" />
+        <AppBarTab title="Dummy" />
+        <AppBarTab title="Dummy" />
       </ScrollView>
     </View>
   );
