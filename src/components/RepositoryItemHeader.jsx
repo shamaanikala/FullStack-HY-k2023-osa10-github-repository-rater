@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexGrow: 1,
     flexDirection: 'row',
-    backgroundColor: 'ivory',
+    backgroundColor: theme.colors.contentBackground, //'ivory',
     paddingVertical: 15,
     paddingStart: 20,
     marginVertical: 5,
