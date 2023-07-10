@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import Constants from 'expo-constants';
 import theme from "../theme";
 // import { useState } from "react";
@@ -30,13 +30,14 @@ const AppBar = () => {
   // <Link> does not work if it has <Pressable> as child
   return (
     <View style={styles.container}>
-      {/* <AppBarTab title={`Repositories ${presses}`} /> */}
-      <Link to="/">
-        <AppBarTab title="Repositories" />
-      </Link>
-      <Link to="/signin">
-        <AppBarTab title="Sign In" />
-      </Link>
+      <ScrollView horizontal>
+        <Link to="/">
+          <AppBarTab title="Repositories" />
+        </Link>
+        <Link to="/signin">
+          <AppBarTab title="Sign In" />
+        </Link>
+      </ScrollView>
     </View>
   );
 };
