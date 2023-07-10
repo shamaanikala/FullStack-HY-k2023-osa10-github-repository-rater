@@ -1,8 +1,9 @@
-import { View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Constants from 'expo-constants';
 import theme from "../theme";
 // import { useState } from "react";
 import AppBarTab from "./AppBarTab";
+import { Link } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,19 +20,23 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   // const [presses, setPresses] = useState(0);
 
-  const handlePress = () => {
-    // setPresses(presses + 1);
-    // console.log(`AppBar tab pressed! (${presses})`);
-    console.log('AppBarTab pressed!');
-  };
+  // const handlePress = () => {
+  //   // setPresses(presses + 1);
+  //   // console.log(`AppBar tab pressed! (${presses})`);
+  //   console.log('AppBarTab pressed!');
+  // };
 
+  // <Pressable> doesn't work if <Link> is its child
+  // <Link> does not work if it has <Pressable> as child
   return (
     <View style={styles.container}>
-      <Pressable onPress={handlePress}>
-        {/* <AppBarTab title={`Repositories ${presses}`} /> */}
+      {/* <AppBarTab title={`Repositories ${presses}`} /> */}
+      <Link to="/">
         <AppBarTab title="Repositories" />
-      </Pressable>
-      <AppBarTab title="Sign In" />
+      </Link>
+      <Link to="/signin">
+        <AppBarTab title="Sign In" />
+      </Link>
     </View>
   );
 };
