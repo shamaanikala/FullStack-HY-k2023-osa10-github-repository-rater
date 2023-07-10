@@ -9,6 +9,7 @@ const theme = {
     // appBarPrimary: '#003',
     appBarPrimary: '#24292e', // example colour from material
     appBarSecondary: 'snow',
+    mainBackground: '#e1e4e8',
   },
   fontSizes: {
     body: 14,
