@@ -1,28 +1,26 @@
 import { useState, useEffect } from "react";
 // import Constants from 'expo-constants';
+import { useQuery } from "@apollo/client";
+
+import { GET_REPOSITORIES } from "../graphql/queries";
 
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
-  const [loading, setLoading] = useState(false);
 
-  const fetchRepositories = async () => {
-    setLoading(true);
-
-    // const NGROK_URL = Constants.manifest.extra.NGROK_URL;
-    // const URL = `${NGROK_URL}/api/repositories`;
-    const URL = 'http://192.168.8.100:5000/api/repositories'
-    const response = await fetch(URL);
-    const json = await response.json();
-
-    setLoading(false);
-    setRepositories(json);
-  };
+  const { data, error, loading, refetch } = useQuery(GET_REPOSITORIES, {
+    fetchPolicy: 'cache-and-network',
+  });
 
   useEffect(() => {
-    fetchRepositories();
-  }, []);
+    if (!loading) {
+      setRepositories(data.repositories);
+    }
+    // loading
+    //   ? console.log('useEffect: loading',loading)
+    //   : console.log('useEffect: data',data);
+  }, [data, loading]);
 
-  return { repositories, loading, refetch: fetchRepositories };
+  return { repositories, loading, error, refetch };
 };
 
 export default useRepositories;
