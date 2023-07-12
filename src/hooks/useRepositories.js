@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Constants from 'expo-constants';
+// import Constants from 'expo-constants';
 
 const useRepositories = () => {
   const [repositories, setRepositories] = useState();
@@ -8,8 +8,9 @@ const useRepositories = () => {
   const fetchRepositories = async () => {
     setLoading(true);
 
-    const NGROK_URL = Constants.manifest.extra.NGROK_URL;
-    const URL = `${NGROK_URL}/api/repositories`;
+    // const NGROK_URL = Constants.manifest.extra.NGROK_URL;
+    // const URL = `${NGROK_URL}/api/repositories`;
+    const URL = 'http://192.168.8.100:5000/api/repositories'
     const response = await fetch(URL);
     const json = await response.json();
 
