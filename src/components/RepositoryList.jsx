@@ -1,7 +1,6 @@
 import { FlatList, View, StyleSheet } from "react-native";
 import RepositoryItem from "./RepositoryItem";
-import { useState, useEffect } from "react";
-import Constants from 'expo-constants';
+import useRepositories from "../hooks/useRepositories";
 
 const styles = StyleSheet.create({
   separator: {
@@ -12,24 +11,7 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  const [repositories, setRepositories] = useState();
-  // const NGROK_URL = 'http://localhost:5000';
-  const NGROK_URL = Constants.manifest.extra.NGROK_URL;
-
-  const fetchRepositories = async () => {
-    const URL = `${NGROK_URL}/api/repositories`;
-    console.log(URL);
-    const response = await fetch(URL);
-    const json = await response.json();
-
-    console.log(json);
-
-    setRepositories(json);
-  };
-
-  useEffect(() => {
-    fetchRepositories();
-  }, []);
+  const { repositories } = useRepositories();
 
   // Get the node from the edge array
   const repositoryNodes = repositories
