@@ -1,15 +1,17 @@
 import { useMutation } from "@apollo/client";
-
 import { AUTHENTICATE } from "../graphql/mutations";
 
 const useSignIn = () => {
-  const [mutate, result] = useMutation(AUTHENTICATE, {
-    onError: error => console.log(error),
+  const [mutate, result ] = useMutation(AUTHENTICATE, {
+    // onError: error => {
+    //   console.log(`Authentication error: ${error.message}`)
+    // },
   });
 
   const signIn = async ({ username, password }) => {
-    mutate({ variables: { credentials: { username, password }}})
-  }
+    // console.log(username, password);
+    await mutate({ variables: { credentials: { username, password }}})
+  };
 
   return [signIn, result];
 };
