@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import Constants from 'expo-constants';
 import { useQuery } from "@apollo/client";
 
 import { GET_REPOSITORIES } from "../graphql/queries";
@@ -15,9 +14,6 @@ const useRepositories = () => {
     if (!loading) {
       setRepositories(data.repositories);
     }
-    // loading
-    //   ? console.log('useEffect: loading',loading)
-    //   : console.log('useEffect: data',data);
   }, [data, loading]);
 
   return { repositories, loading, error, refetch };
