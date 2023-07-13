@@ -13,8 +13,15 @@ const styles = StyleSheet.create({
   },
   avatarContainer: {},
   headerContentContainer: {
-    marginHorizontal: 15,
+    // backgroundColor: 'pink',
+    // borderWidth: 1,
+    maxWidth: '89%',
+    // marginHorizontal: 15,
+    marginStart: 15,
+    marginRight: 20,
     paddingHorizontal: 15,
+    // paddingStart: 3,
+    // paddingEnd: 25,
     alignItems: 'flex-start',
   },
   itemDescription: {
