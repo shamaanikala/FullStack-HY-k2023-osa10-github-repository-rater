@@ -4,6 +4,8 @@ import { Formik } from "formik";
 import theme from "../theme";
 import * as yup from 'yup';
 import useSignIn from "../hooks/useSignIn";
+import { useNavigate } from "react-router-native";
+import { useEffect } from "react";
 
 const styles = StyleSheet.create({
   container: {
@@ -57,7 +59,8 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-  const [signIn] = useSignIn();
+  const [signIn, result] = useSignIn();
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
@@ -69,10 +72,16 @@ const SignIn = () => {
     }
   };
 
-  // if (result.data && result.data.authenticate) {
-  //   console.log('authenticate');
-  //   console.log(result.data.authenticate.accessToken);
-  // }
+  // Ex10.15 need to add useEffect to prevent:
+  // Warning: Cannot update a component (`MemoryRouter`) while rendering a different component (`SignIn`)
+  useEffect(() => {
+    if (result.data && result.data.authenticate) {
+      console.log('Authentication succesfull!');
+      console.log('Redirecting back to repository list...');
+      navigate('/');
+    }
+  }, [result.data]);
+
 
   return (
     <View style={styles.container}>
