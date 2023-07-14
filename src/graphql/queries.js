@@ -13,3 +13,14 @@ export const GET_REPOSITORIES = gql`
   }
   ${REPOSITORY_DATA}
 `;
+
+// testing if this query works without 'query'
+// like within the Apollo Sandbox
+export const GET_SIGNED_USER = gql`
+  {
+    me {
+      id
+      username
+    }
+  }
+`;

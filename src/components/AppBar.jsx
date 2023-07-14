@@ -1,9 +1,11 @@
 import { View, StyleSheet, ScrollView } from "react-native";
 import Constants from 'expo-constants';
 import theme from "../theme";
-// import { useState } from "react";
 import AppBarTab from "./AppBarTab";
 import { Link } from "react-router-native";
+import { useQuery } from "@apollo/client";
+import { GET_SIGNED_USER } from "../graphql/queries";
+import { useEffect, useState } from "react";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,13 +25,24 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  // const [presses, setPresses] = useState(0);
+  const userQuery = useQuery(GET_SIGNED_USER);
+  const [signedUser, setSignedUser] = useState(null);
 
-  // const handlePress = () => {
-  //   // setPresses(presses + 1);
-  //   // console.log(`AppBar tab pressed! (${presses})`);
-  //   console.log('AppBarTab pressed!');
-  // };
+  useEffect(() => {
+    // console.log(userQuery.data && userQuery.data.me.username);
+    if (userQuery.loading) {
+      return;
+    }
+
+    if (userQuery.data && userQuery.data.me) {
+      if (userQuery.data.me !== null) {
+        console.log('Logged user detected:', userQuery.data.me);
+        setSignedUser(userQuery.data.me);
+      } else {
+        setSignedUser(null);
+      }
+    }
+  }, [userQuery]);
 
   // <Pressable> doesn't work if <Link> is its child
   // <Link> does not work if it has <Pressable> as child
@@ -39,9 +52,16 @@ const AppBar = () => {
         <Link to="/">
           <AppBarTab title="Repositories" />
         </Link>
-        <Link to="/signin">
-          <AppBarTab title="Sign In" />
-        </Link>
+        {!signedUser &&
+          <Link to="/signin">
+            <AppBarTab title="Sign In" />
+          </Link>
+        }
+        {signedUser &&
+          <Link to="/">
+            <AppBarTab title="Sign Out" />
+          </Link>
+        }
       </ScrollView>
     </View>
   );
