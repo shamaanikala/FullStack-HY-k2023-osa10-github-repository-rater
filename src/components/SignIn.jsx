@@ -76,8 +76,6 @@ const SignIn = () => {
   // Warning: Cannot update a component (`MemoryRouter`) while rendering a different component (`SignIn`)
   useEffect(() => {
     if (result.data && result.data.authenticate) {
-      console.log('Authentication succesfull!');
-      console.log('Redirecting back to repository list...');
       navigate('/');
     }
   }, [result.data]);

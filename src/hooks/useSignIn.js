@@ -13,8 +13,6 @@ const useSignIn = () => {
       try {
         await authStorage.setAccessToken(data.authenticate.accessToken);
         await resetApolloClientStoreIfTokenExists();     
-      // apolloClient.resetStore();
-      // console.log('onCompleted:', await authStorage.getAccessToken());
       } catch (e) {
         console.log(e);
       }
@@ -24,13 +22,6 @@ const useSignIn = () => {
   const signIn = async ({ username, password }) => {
     // console.log(username, password);
     await mutate({ variables: { credentials: { username, password }}})
-    // const { data } = await mutate({ variables: { credentials: { username, password }}})
-    // if (data) {
-    //   console.log('signIn:',data.authenticate.accessToken);
-    //   console.log('setAccessToken');
-    //   await authStorage.setAccessToken(data.authenticate.accessToken);
-    // }
-    // console.log('getAccessToken:',await authStorage.getAccessToken());
   };
 
   const resetApolloClientStoreIfTokenExists = async () => {

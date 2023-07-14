@@ -38,7 +38,6 @@ const AppBar = () => {
 
     if (userQuery.data && userQuery.data.me) {
       if (userQuery.data.me !== null) {
-        console.log('Logged user detected:', userQuery.data.me);
         setSignedUser(userQuery.data.me);
       } else {
         setSignedUser(null);
@@ -47,15 +46,9 @@ const AppBar = () => {
   }, [userQuery]);
 
   const handleSignOut = async () => {
-    console.log(`Signin out ${signedUser.username}...`);
-    console.log('resetting components react state...')
     setSignedUser(null);
-    console.log('Removing the accessToken from authStorage...');
     await authStorage.removeAccessToken();
-    console.log('Removed the accessToken');
-    console.log('Resetting the Apollo Client Store');
     await apolloClient.resetStore();
-    console.log('Apollo Client Store resetted');
   };
 
   // <Pressable> doesn't work if <Link> is its child
@@ -72,11 +65,9 @@ const AppBar = () => {
           </Link>
         }
         {signedUser &&
-          // <Link to="/">
           <Pressable onPress={handleSignOut}>
             <AppBarTab title="Sign Out" />
           </Pressable>
-          // </Link>
         }
       </ScrollView>
     </View>

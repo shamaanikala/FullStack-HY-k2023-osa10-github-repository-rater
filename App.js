@@ -9,16 +9,7 @@ import AuthStorageContext from './src/hooks/useAuthStorage';
 const authStorage = new AuthStorage();
 const apolloClient = createApolloClient(authStorage);
 
-// const resetAuthStorage = async () => {
-//   console.log('Reloading: resetting authStore.accessToken');
-//   await authStorage.removeAccessToken();
-// };
-
 const App = () => {
-
-  // reset authStore for testing
-  // resetAuthStorage();
-
   return (
     <NativeRouter>
       <ApolloProvider client={apolloClient}>
