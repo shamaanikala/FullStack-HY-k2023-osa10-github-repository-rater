@@ -10,10 +10,15 @@ const useSignIn = () => {
     //   console.log(`Authentication error: ${error.message}`)
     // },
     onCompleted: async data => {
-      await authStorage.setAccessToken(data.authenticate.accessToken);
-      apolloClient.resetStore();
+      try {
+        await authStorage.setAccessToken(data.authenticate.accessToken);
+        await resetApolloClientStoreIfTokenExists();     
+      // apolloClient.resetStore();
       // console.log('onCompleted:', await authStorage.getAccessToken());
-    }
+      } catch (e) {
+        console.log(e);
+      }
+    },
   });
 
   const signIn = async ({ username, password }) => {
@@ -26,6 +31,14 @@ const useSignIn = () => {
     //   await authStorage.setAccessToken(data.authenticate.accessToken);
     // }
     // console.log('getAccessToken:',await authStorage.getAccessToken());
+  };
+
+  const resetApolloClientStoreIfTokenExists = async () => {
+    const token = await authStorage.getAccessToken();
+    if (!token) {
+      throw new Error('Unable to read accessToken'); 
+    } 
+    apolloClient.resetStore();
   };
 
   return [signIn, result];
