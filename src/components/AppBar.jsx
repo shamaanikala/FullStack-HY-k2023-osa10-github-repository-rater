@@ -1,4 +1,4 @@
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, Pressable } from "react-native";
 import Constants from 'expo-constants';
 import theme from "../theme";
 import AppBarTab from "./AppBarTab";
@@ -44,6 +44,10 @@ const AppBar = () => {
     }
   }, [userQuery]);
 
+  const handleSignOut = async () => {
+    console.log('Sign out pressed');
+  };
+
   // <Pressable> doesn't work if <Link> is its child
   // <Link> does not work if it has <Pressable> as child
   return (
@@ -58,9 +62,11 @@ const AppBar = () => {
           </Link>
         }
         {signedUser &&
-          <Link to="/">
+          // <Link to="/">
+          <Pressable onPress={handleSignOut}>
             <AppBarTab title="Sign Out" />
-          </Link>
+          </Pressable>
+          // </Link>
         }
       </ScrollView>
     </View>
