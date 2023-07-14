@@ -17,6 +17,11 @@ const authTesti = async () => {
   console.log('testi:', testi);
   testiToken = await testi.getAccessToken();
   console.log('testiToken:', testiToken);
+  console.log('Poistetaan testiToken');
+  await testi.removeAccessToken();
+  console.log('vanha muuttuja testiToken:', testiToken); // tämä säilyy
+  testiToken = await testi.getAccessToken();
+  console.log('testiToken:', testiToken);
 };
 
 const App = () => {
