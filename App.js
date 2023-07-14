@@ -4,12 +4,16 @@ import { ApolloProvider } from '@apollo/client';
 import Main from "./src/components/Main";
 import createApolloClient from './src/utils/apolloClient';
 import AuthStorage from './src/utils/authStorage';
-import AuthStorageContext from './src/contexts/AuthStorageContext';
+// import AuthStorageContext from './src/contexts/AuthStorageContext';
+import AuthStorageContext from './src/hooks/useAuthStorage';
 
 const authStorage = new AuthStorage();
 const apolloClient = createApolloClient(authStorage);
 
 const App = () => {
+  // reset authStore for testing
+  console.log('Reloading: resetting authStore.accessToken');
+  authStorage.removeAccessToken();
   return (
     <NativeRouter>
       <ApolloProvider client={apolloClient}>

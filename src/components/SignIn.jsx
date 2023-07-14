@@ -57,7 +57,7 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-  const [signIn, result] = useSignIn();
+  const [signIn] = useSignIn();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
@@ -69,10 +69,10 @@ const SignIn = () => {
     }
   };
 
-  if (result.data && result.data.authenticate) {
-    console.log('authenticate');
-    console.log(result.data.authenticate.accessToken);
-  }
+  // if (result.data && result.data.authenticate) {
+  //   console.log('authenticate');
+  //   console.log(result.data.authenticate.accessToken);
+  // }
 
   return (
     <View style={styles.container}>
