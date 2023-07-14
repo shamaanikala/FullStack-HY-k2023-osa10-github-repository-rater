@@ -3,6 +3,56 @@ import { fireEvent, render, screen } from "@testing-library/react-native";
 import { useState } from "react";
 
 
+//------------------------
+// Own counter form test
+
+const Counter = ({ onSubmit }) => {
+  const [counter, setCounter] = useState(0);
+
+  const handleSubmit = () => {
+    onSubmit(setCounter(counter + 1));
+  };
+
+  return (
+    <View>
+      <Text>{counter}</Text>
+      <View>
+        <Pressable onPress={handleSubmit}>
+          <Text>Increment</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+};
+
+describe('Counter', () => {
+  it('is incremented by one when pressed once', () => {
+    const onSubmit = jest.fn();
+    render(<Counter onSubmit={onSubmit} />);
+
+    fireEvent.press(screen.getByText('Increment'));
+
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+
+    expect(screen.getByText('1')).toBeDefined();
+    // expect(screen.getByTestId('counterValue')).toEqual(1);
+  });
+  it('is incremented by three when pressed thrice', () => {
+    const onSubmit = jest.fn();
+    render(<Counter onSubmit={onSubmit} />);
+
+    fireEvent.press(screen.getByText('Increment'));
+    fireEvent.press(screen.getByText('Increment'));
+    fireEvent.press(screen.getByText('Increment'));
+
+    expect(onSubmit).toHaveBeenCalledTimes(3);
+
+    expect(screen.getByText('3')).toBeDefined();
+  });
+});
+
+// -----------------------
+
 const Form = ({ onSubmit }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -40,6 +90,8 @@ describe('Form', () => {
   it('calls function provided by onSubmit prop after pressing the submit button', () => {
     const onSubmit = jest.fn();
     render(<Form onSubmit={onSubmit} />);
+
+    // screen.debug();
 
     fireEvent.changeText(screen.getByPlaceholderText('Username'), 'kalle');
     fireEvent.changeText(screen.getByPlaceholderText('Password'), 'password');
