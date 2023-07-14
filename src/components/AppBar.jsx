@@ -3,9 +3,10 @@ import Constants from 'expo-constants';
 import theme from "../theme";
 import AppBarTab from "./AppBarTab";
 import { Link } from "react-router-native";
-import { useQuery } from "@apollo/client";
+import { useApolloClient, useQuery } from "@apollo/client";
 import { GET_SIGNED_USER } from "../graphql/queries";
 import { useEffect, useState } from "react";
+import { useAuthStorage } from "../hooks/useAuthStorage";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,9 +28,10 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   const userQuery = useQuery(GET_SIGNED_USER);
   const [signedUser, setSignedUser] = useState(null);
+  const authStorage = useAuthStorage();
+  const apolloClient = useApolloClient();
 
   useEffect(() => {
-    // console.log(userQuery.data && userQuery.data.me.username);
     if (userQuery.loading) {
       return;
     }
@@ -45,7 +47,15 @@ const AppBar = () => {
   }, [userQuery]);
 
   const handleSignOut = async () => {
-    console.log('Sign out pressed');
+    console.log(`Signin out ${signedUser.username}...`);
+    console.log('resetting components react state...')
+    setSignedUser(null);
+    console.log('Removing the accessToken from authStorage...');
+    await authStorage.removeAccessToken();
+    console.log('Removed the accessToken');
+    console.log('Resetting the Apollo Client Store');
+    await apolloClient.resetStore();
+    console.log('Apollo Client Store resetted');
   };
 
   // <Pressable> doesn't work if <Link> is its child

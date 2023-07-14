@@ -38,7 +38,7 @@ const useSignIn = () => {
     if (!token) {
       throw new Error('Unable to read accessToken'); 
     } 
-    apolloClient.resetStore();
+    await apolloClient.resetStore();
   };
 
   return [signIn, result];
