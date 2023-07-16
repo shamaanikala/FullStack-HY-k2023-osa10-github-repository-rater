@@ -4,6 +4,7 @@ import RepositoryItemFooter from "../RepositoryItemFooter";
 import theme from "../../theme";
 import { useNavigate } from "react-router-native";
 import { useEffect, useState } from "react";
+import * as Linking from 'expo-linking';
 
 // https://reactnative.dev/docs/flatlist?language=javascript
 const styles = StyleSheet.create({
@@ -33,9 +34,11 @@ const RepositoryItem = ({ item, viewOne = false }) => {
     setRepoPressed(id);
   };
 
+  const handleOpenGitHubButtonPress = () => {
+    Linking.openURL(repo.url);
+  };
+
   const RepositoryItemInfo = ({ repo }) => {
-
-
     const {
       fullName,
       description,
@@ -72,7 +75,7 @@ const RepositoryItem = ({ item, viewOne = false }) => {
       <RepositoryItemInfo repo={repo} />
       <Button
         style={styles.button}
-        onPress={() => console.log(`Open in GitHub pressed! link: ${repo.url}`)}
+        onPress={() => handleOpenGitHubButtonPress()}
         title="Open in GitHub"
       />
     </View>
