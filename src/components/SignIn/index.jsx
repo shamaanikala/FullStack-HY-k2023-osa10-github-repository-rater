@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const SignInForm = ({ onSubmit }) => {
+const SignInForm = ({ onSubmit }) => {
   return (
     <View style={styles.formContainer}>
       <FormikTextInput style={styles.textInput} name="username" placeholder="Username" />
@@ -42,6 +42,18 @@ export const SignInForm = ({ onSubmit }) => {
       />
     </View>
   );
+};
+
+export const FormikSignInForm = ({ initialValues, onSubmit, validationSchema }) => {
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+    </Formik>
+  )
 };
 
 const initialValues = { username: '', password: '' };
@@ -83,13 +95,11 @@ const SignIn = () => {
 
   return (
     <View style={styles.container}>
-      <Formik
+      <FormikSignInForm
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
-      >
-        {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
-      </Formik>
+      />
     </View>
   );
 };
