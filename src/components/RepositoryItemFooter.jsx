@@ -27,8 +27,9 @@ const styles = StyleSheet.create({
 const InfoItem = ({ value, label }) => {
   const renderValue = truncateNumber(value);
   return (
-    <View style={styles.infoItemContainer}>
+    <View testID="infoItem" style={styles.infoItemContainer}>
       <Text
+        testID="infoItemValue"
         fontWeight="bold"
         fontSize="subheading"
         style={styles.infoItemValue}
@@ -36,6 +37,7 @@ const InfoItem = ({ value, label }) => {
         {renderValue}
       </Text>
       <Text
+        testID="infoItemLabel"
         fontSize="subheading"
         color="textPrimary"
         style={styles.infoItemLabel}
@@ -47,10 +49,10 @@ const InfoItem = ({ value, label }) => {
 const RepositoryItemFooter = ({ stars, forks, reviews, rating }) => {
   return (
     <View style={styles.container}>
-      <InfoItem testID="stars" label="Stars" value={stars} />
-      <InfoItem testID="forks" label="Forks" value={forks} />
-      <InfoItem testID="reviews" label="Reviews" value={reviews} />
-      <InfoItem testID="rating" label="Rating" value={rating} />
+      <InfoItem label="Stars" value={stars} />
+      <InfoItem label="Forks" value={forks} />
+      <InfoItem label="Reviews" value={reviews} />
+      <InfoItem label="Rating" value={rating} />
     </View>
   );
 };

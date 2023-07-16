@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react-native";
+import { render, screen, within } from "@testing-library/react-native";
 import { RepositoryListContainer } from "../RepositoryList";
+import { truncateNumber } from "../../utils";
 
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
@@ -58,6 +59,8 @@ describe('RepositoryList', () => {
         const repositoryItems = screen.getAllByTestId('repositoryItem');
 
         [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
+
+        // console.log(firstRepositoryItem);
       });
       // screen.debug();
       console.log(repositories.edges[0].node.fullName);
@@ -65,6 +68,8 @@ describe('RepositoryList', () => {
       const repoFullNames = repositories.edges.map(e => e.node.fullName);
       const repoDescriptions = repositories.edges.map(e => e.node.description);
       const repoLanguages = repositories.edges.map(e => e.node.language);
+
+      const forksCounts = repositories.edges.map(e => e.node.forksCount);
 
       describe('for first repositories list item', () => {
         it('textual elements within header are rendered correctly', () => {
@@ -74,8 +79,17 @@ describe('RepositoryList', () => {
 
         });
         describe('repository info items are rendered correctly', () => {
-          it('fork count', () => {
-            expect(0).toEqual(1);
+          let stars, forks, reviews, rating;
+          beforeEach(() => {
+            const infoItems = within(firstRepositoryItem).getAllByTestId('infoItem');
+            [stars, forks, reviews, rating] = infoItems;
+          });
+
+          it.only('forks count', () => {
+            expect(firstRepositoryItem).toHaveTextContent('Forks');
+            expect(forks).toHaveTextContent('Forks');
+            const forkValue = within(forks).getByTestId('infoItemValue');
+            expect(forkValue).toHaveTextContent(truncateNumber(forksCounts[0]));
           });
           it('stargazers count', () => {
             expect(0).toEqual(1);
