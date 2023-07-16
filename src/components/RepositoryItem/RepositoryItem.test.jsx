@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react-native";
 import { RepositoryListContainer } from "../RepositoryList";
 import { truncateNumber } from "../../utils";
+import { NativeRouter } from "react-router-native";
 
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
@@ -55,7 +56,9 @@ describe('RepositoryList', () => {
       let repoItems;
       beforeEach(() => {
         render(
-          <RepositoryListContainer repositories={repositories} />
+          <NativeRouter>
+            <RepositoryListContainer repositories={repositories} />
+          </NativeRouter>
         );
         const repositoryItems = screen.getAllByTestId('repositoryItem');
 
