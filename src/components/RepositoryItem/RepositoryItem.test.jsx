@@ -66,17 +66,36 @@ describe('RepositoryList', () => {
       const repoDescriptions = repositories.edges.map(e => e.node.description);
       const repoLanguages = repositories.edges.map(e => e.node.language);
 
-      it('for first repositories list item', () => {
-        expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
-        expect(firstRepositoryItem).toHaveTextContent(repoDescriptions[0]);
-        expect(firstRepositoryItem).toHaveTextContent(repoLanguages[0]);
+      describe('for first repositories list item', () => {
+        it('textual elements within header are rendered correctly', () => {
+          expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
+          expect(firstRepositoryItem).toHaveTextContent(repoDescriptions[0]);
+          expect(firstRepositoryItem).toHaveTextContent(repoLanguages[0]);
 
+        });
+        describe('repository info items are rendered correctly', () => {
+          it('fork count', () => {
+            expect(0).toEqual(1);
+          });
+          it('stargazers count', () => {
+            expect(0).toEqual(1);
+          });
+
+          it('rating average', () => {
+            expect(0).toEqual(1);
+          });
+
+          it('review count', () => {
+            expect(0).toEqual(1);
+          });
+        });
       });
-      it('for second repositories list item', () => {
-        expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
-        expect(secondRepositoryItem).toHaveTextContent(repoDescriptions[1]);
-        expect(secondRepositoryItem).toHaveTextContent(repoLanguages[1]);
-
+      describe('for second repositories list item', () => {
+        it('textual elements within header are rendered correctly', () => {
+          expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
+          expect(secondRepositoryItem).toHaveTextContent(repoDescriptions[1]);
+          expect(secondRepositoryItem).toHaveTextContent(repoLanguages[1]);
+        });
       });
     });
   });
