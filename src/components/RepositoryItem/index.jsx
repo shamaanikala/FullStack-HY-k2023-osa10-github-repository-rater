@@ -72,7 +72,7 @@ const RepositoryItem = ({ item, viewOne = false }) => {
       <RepositoryItemInfo repo={repo} />
       <Button
         style={styles.button}
-        onPress={() => console.log(`Open in GitHub pressed!`)}
+        onPress={() => console.log(`Open in GitHub pressed! link: ${repo.url}`)}
         title="Open in GitHub"
       />
     </View>
