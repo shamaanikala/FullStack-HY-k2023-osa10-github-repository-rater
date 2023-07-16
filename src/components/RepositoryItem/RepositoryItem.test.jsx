@@ -68,7 +68,8 @@ describe('RepositoryList', () => {
       // describe()
       // eslint-disable-next-line jest/no-commented-out-tests
       //    it() 
-      // blog here
+      // block here without altering the structure i.e. this 
+      // current block can't be a it block
       const repoFullNames = repositories.edges.map(e => e.node.fullName);
       expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
       expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
