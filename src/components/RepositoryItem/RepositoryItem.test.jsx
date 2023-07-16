@@ -52,9 +52,26 @@ describe('RepositoryList', () => {
         <RepositoryListContainer repositories={repositories} />
       );
 
-      screen.debug();
+      // screen.debug();
       console.log(repositories.edges[0].node.fullName);
-      expect(screen.getByText(repositories.edges[0].node.fullName)).toBeDefined();
+
+      const repositoryItems = screen.getAllByTestId('repositoryItem');
+      const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
+
+      // these do not print anything meaningful
+      // console.log(firstRepositoryItem);
+      // console.log(secondRepositoryItem);
+
+      // expect(screen.getByText(repositories.edges[0].node.fullName)).toBeDefined();
+      // tests cannot be nestet, so can't make a
+      // eslint-disable-next-line jest/no-commented-out-tests
+      // describe()
+      // eslint-disable-next-line jest/no-commented-out-tests
+      //    it() 
+      // blog here
+      const repoFullNames = repositories.edges.map(e => e.node.fullName);
+      expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
+      expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
     });
   });
 });
