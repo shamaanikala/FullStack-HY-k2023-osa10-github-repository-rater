@@ -47,11 +47,12 @@ const RepositoryViewContainer = ({ repositories }) => {
   };
 
   // Get the node from the edge array
-  const repositoryNodes = repositories
+  const repositoryNodes = repositoriesDummy
     // ? repositories.edges.map(edge => edge.node)
     ? repositoriesDummy.edges.map(e => e.node)
     : [];
 
+  console.log(repositoryNodes[0]);
   return <RepositoryItem item={repositoryNodes[0]} viewOne />;
 };
 

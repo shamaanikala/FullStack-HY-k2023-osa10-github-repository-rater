@@ -2,6 +2,8 @@ import { StyleSheet, View, Button, Pressable } from "react-native";
 import RepositoryItemHeader from "../RepositoryItemHeader";
 import RepositoryItemFooter from "../RepositoryItemFooter";
 import theme from "../../theme";
+import { useNavigate } from "react-router-native";
+import { useEffect, useState } from "react";
 
 // https://reactnative.dev/docs/flatlist?language=javascript
 const styles = StyleSheet.create({
@@ -16,19 +18,23 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item, viewOne = false }) => {
   const repo = item;
-  // const viewOne = props.viewSingleRepository;
-  // const {
-  //   fullName,
-  //   description,
-  //   language,
-  //   stargazersCount,
-  //   forksCount,
-  //   reviewCount,
-  //   ratingAverage,
-  //   ...rest
-  // } = repo;
+  const [repoPressed, setRepoPressed] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (repoPressed !== null) {
+      navigate(`/${repoPressed}`);
+      setRepoPressed(null);
+    }
+  }, [repoPressed]);
+
+  const handleRepoPress = (id) => {
+    setRepoPressed(id);
+  };
 
   const RepositoryItemInfo = ({ repo }) => {
+
+
     const {
       fullName,
       description,
@@ -58,19 +64,20 @@ const RepositoryItem = ({ item, viewOne = false }) => {
     );
   };
 
+
   return viewOne
     ?
     <View>
       <RepositoryItemInfo repo={repo} />
       <Button
         style={styles.button}
-        onPress={() => console.log(`Open ${repo.id} in GitHub pressed!`)}
+        onPress={() => console.log(`Open in GitHub pressed!`)}
         title="Open in GitHub"
       />
     </View>
     :
     <View>
-      <Pressable onPress={() => console.log(`directing to single view of ${repo.fullName}`)}>
+      <Pressable onPress={() => handleRepoPress(repo.id)}>
         <RepositoryItemInfo repo={repo} />
       </Pressable>
     </View>;
