@@ -24,7 +24,6 @@ const RepositoryItem = ({ item, viewOne = false }) => {
 
   useEffect(() => {
     if (repoPressed !== null) {
-      console.log(`Navigating to repo id ${repoPressed}`);
       navigate(`/${repoPressed}`);
       setRepoPressed(null);
     }

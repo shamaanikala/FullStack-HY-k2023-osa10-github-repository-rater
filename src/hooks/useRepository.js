@@ -11,11 +11,8 @@ const useRepository = (repositoryId) => {
     variables: { repositoryId },
   });
   
-  console.log('useRepository', repositoryId);
-
   useEffect(() => {
     if (!loading) {
-      console.log(`found repo with id ${repositoryId}`);
       setRepository(data.repository);
     }
   }, [data, loading]);
