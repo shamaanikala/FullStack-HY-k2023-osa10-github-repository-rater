@@ -1,4 +1,4 @@
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Button, Pressable } from "react-native";
 import RepositoryItemHeader from "../RepositoryItemHeader";
 import RepositoryItemFooter from "../RepositoryItemFooter";
 import theme from "../../theme";
@@ -16,41 +16,65 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = (props) => {
   const repo = props.item;
-  const viewSingleRepository = props.singleRepositoryView;
-  const {
-    fullName,
-    description,
-    language,
-    stargazersCount,
-    forksCount,
-    reviewCount,
-    ratingAverage,
-    ...rest
-  } = repo;
+  // const viewOne = props.viewSingleRepository;
+  const viewOne = false;
+  // const {
+  //   fullName,
+  //   description,
+  //   language,
+  //   stargazersCount,
+  //   forksCount,
+  //   reviewCount,
+  //   ratingAverage,
+  //   ...rest
+  // } = repo;
 
-  return (
-    <View testID="repositoryItem" style={styles.item}>
-      <RepositoryItemHeader
-        avatarUrl={rest.ownerAvatarUrl}
-        fullName={fullName}
-        description={description}
-        language={language}
-      />
-      <RepositoryItemFooter
-        stars={stargazersCount}
-        forks={forksCount}
-        reviews={reviewCount}
-        rating={ratingAverage}
-      />
-      {viewSingleRepository &&
-        <Button
-          style={styles.button}
-          onPress={() => console.log('Open in GitHub pressed!')}
-          title="Open in GitHub"
+  const RepositoryItemInfo = ({ repo }) => {
+    const {
+      fullName,
+      description,
+      language,
+      stargazersCount,
+      forksCount,
+      reviewCount,
+      ratingAverage,
+      ...rest
+    } = repo;
+
+    return (
+      <View testID="repositoryItem" style={styles.item}>
+        <RepositoryItemHeader
+          avatarUrl={rest.ownerAvatarUrl}
+          fullName={fullName}
+          description={description}
+          language={language}
         />
-      }
+        <RepositoryItemFooter
+          stars={stargazersCount}
+          forks={forksCount}
+          reviews={reviewCount}
+          rating={ratingAverage}
+        />
+      </View>
+    );
+  };
+
+  return viewOne
+    ?
+    <View>
+      <RepositoryItemInfo repo={repo} />
+      <Button
+        style={styles.button}
+        onPress={() => console.log(`Open ${repo.fullName} in GitHub pressed!`)}
+        title="Open in GitHub"
+      />
     </View>
-  );
+    :
+    <View>
+      <Pressable onPress={() => console.log(`directing to single view of ${repo.fullName}`)}>
+        <RepositoryItemInfo repo={repo} />
+      </Pressable>
+    </View>;
 };
 
 export default RepositoryItem;
