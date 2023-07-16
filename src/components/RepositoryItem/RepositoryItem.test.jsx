@@ -1,3 +1,6 @@
+import { render, screen } from "@testing-library/react-native";
+import RepositoryItem from ".";
+
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
     it('renders repository information correctly', () => {
@@ -45,6 +48,11 @@ describe('RepositoryList', () => {
       };
 
       // Add your test code here
+      render(<RepositoryItem item={repositories.edges[0].node} />);
+
+      screen.debug();
+      console.log(repositories.edges[0].node.fullName);
+      expect(screen.getByText(repositories.edges[0].node.fullName)).toBeDefined();
     });
   });
 });
