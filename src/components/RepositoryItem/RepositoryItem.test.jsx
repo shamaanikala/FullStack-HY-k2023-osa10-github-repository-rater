@@ -48,23 +48,26 @@ describe('RepositoryList', () => {
       };
 
       // Add your test code here
-      let repositoryItems;
+      // let repositoryItems;
+      let firstRepositoryItem;
+      let secondRepositoryItem;
       beforeEach(() => {
         render(
           <RepositoryListContainer repositories={repositories} />
         );
-        repositoryItems = screen.getAllByTestId('repositoryItem');
+        const repositoryItems = screen.getAllByTestId('repositoryItem');
+
+        [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
       });
       // screen.debug();
       console.log(repositories.edges[0].node.fullName);
 
       const repoFullNames = repositories.edges.map(e => e.node.fullName);
+
       it('for first repositories list item', () => {
-        const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
         expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
       });
       it('for second repositories list item', () => {
-        const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
         expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
       });
     });
