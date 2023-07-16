@@ -62,9 +62,9 @@ describe('RepositoryList', () => {
         [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
         repoItems = [firstRepositoryItem, secondRepositoryItem];
-        // console.log(firstRepositoryItem);
+
+        // screen.debug();
       });
-      // screen.debug();
       console.log(repositories.edges[0].node.fullName);
 
       const repoFullNames = repositories.edges.map(e => e.node.fullName);
@@ -76,10 +76,10 @@ describe('RepositoryList', () => {
       const reviewsCounts = repositories.edges.map(e => e.node.reviewCount);
       const ratingAverages = repositories.edges.map(e => e.node.ratingAverage);
 
-      describe.only('for repositories list item', () => {
+      describe('for repositories list items', () => {
         // can't use repoItems.length here, using hard coded value 2
         for (let i = 0; i < 2; i++) {
-          describe(`for item ${i + 1}`, () => {
+          describe(`item ${i + 1}`, () => {
             it('textual elements within header are rendered correctly', () => {
               expect(repoItems[i]).toHaveTextContent(repoFullNames[i]);
               expect(repoItems[i]).toHaveTextContent(repoDescriptions[i]);
@@ -116,9 +116,10 @@ describe('RepositoryList', () => {
               });
 
               it('review count', () => {
+                // screen.debug();
                 expect(repoItems[i]).toHaveTextContent('Reviews');
                 expect(reviews).toHaveTextContent('Reviews');
-                const reviewValue = within(forks).getByTestId('infoItemValue');
+                const reviewValue = within(reviews).getByTestId('infoItemValue');
                 expect(reviewValue).toHaveTextContent(truncateNumber(reviewsCounts[i]));
               });
             });
