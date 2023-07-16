@@ -3,7 +3,7 @@ import { RepositoryListContainer } from "../RepositoryList";
 
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
-    it('renders repository information correctly', () => {
+    describe('renders repository information correctly', () => {
       const repositories = {
         totalCount: 8,
         pageInfo: {
@@ -48,31 +48,25 @@ describe('RepositoryList', () => {
       };
 
       // Add your test code here
-      render(
-        <RepositoryListContainer repositories={repositories} />
-      );
-
+      let repositoryItems;
+      beforeEach(() => {
+        render(
+          <RepositoryListContainer repositories={repositories} />
+        );
+        repositoryItems = screen.getAllByTestId('repositoryItem');
+      });
       // screen.debug();
       console.log(repositories.edges[0].node.fullName);
 
-      const repositoryItems = screen.getAllByTestId('repositoryItem');
-      const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
-
-      // these do not print anything meaningful
-      // console.log(firstRepositoryItem);
-      // console.log(secondRepositoryItem);
-
-      // expect(screen.getByText(repositories.edges[0].node.fullName)).toBeDefined();
-      // tests cannot be nestet, so can't make a
-      // eslint-disable-next-line jest/no-commented-out-tests
-      // describe()
-      // eslint-disable-next-line jest/no-commented-out-tests
-      //    it() 
-      // block here without altering the structure i.e. this 
-      // current block can't be a it block
       const repoFullNames = repositories.edges.map(e => e.node.fullName);
-      expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
-      expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
+      it('for first repositories list item', () => {
+        const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
+        expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
+      });
+      it('for second repositories list item', () => {
+        const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
+        expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
+      });
     });
   });
 });
