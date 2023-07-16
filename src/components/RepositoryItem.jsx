@@ -24,7 +24,7 @@ const RepositoryItem = (props) => {
   } = repo;
 
   return (
-    <View style={styles.item}>
+    <View testID="repositoryItem" style={styles.item}>
       <RepositoryItemHeader
         avatarUrl={rest.ownerAvatarUrl}
         fullName={fullName}
