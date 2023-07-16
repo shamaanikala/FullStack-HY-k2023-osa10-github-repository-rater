@@ -1,7 +1,13 @@
-import { render, screen, within } from "@testing-library/react-native";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react-native";
 
 describe('SignIn', () => {
-  it('works', () => {
-    expect('works').toEqual('works');
+  describe('SignInForm', () => {
+    it('calls onSubmit function with correct arguments when a valid form is submitted', async () => {
+      // render the SignInContainer/Form component, fill the text inputs and press the submit button
+
+      await waitFor(() => {
+        // expect the onSubmit function to have been called once and with a correct first argument
+      });
+    });
   });
 });
