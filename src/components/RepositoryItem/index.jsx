@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import RepositoryItemHeader from "./RepositoryItemHeader";
-import RepositoryItemFooter from "./RepositoryItemFooter";
+import RepositoryItemHeader from "../RepositoryItemHeader";
+import RepositoryItemFooter from "../RepositoryItemFooter";
 
 // https://reactnative.dev/docs/flatlist?language=javascript
 const styles = StyleSheet.create({
