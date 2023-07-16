@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react-native";
-import RepositoryItem from ".";
+import { RepositoryListContainer } from "../RepositoryList";
 
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
@@ -48,7 +48,9 @@ describe('RepositoryList', () => {
       };
 
       // Add your test code here
-      render(<RepositoryItem item={repositories.edges[0].node} />);
+      render(
+        <RepositoryListContainer repositories={repositories} />
+      );
 
       screen.debug();
       console.log(repositories.edges[0].node.fullName);
