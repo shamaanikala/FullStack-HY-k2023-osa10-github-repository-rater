@@ -47,10 +47,10 @@ const InfoItem = ({ value, label }) => {
 const RepositoryItemFooter = ({ stars, forks, reviews, rating }) => {
   return (
     <View style={styles.container}>
-      <InfoItem label="Stars" value={stars} />
-      <InfoItem label="Forks" value={forks} />
-      <InfoItem label="Reviews" value={reviews} />
-      <InfoItem label="Rating" value={rating} />
+      <InfoItem testID="stars" label="Stars" value={stars} />
+      <InfoItem testID="forks" label="Forks" value={forks} />
+      <InfoItem testID="reviews" label="Reviews" value={reviews} />
+      <InfoItem testID="rating" label="Rating" value={rating} />
     </View>
   );
 };
