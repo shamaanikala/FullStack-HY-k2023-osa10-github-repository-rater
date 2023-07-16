@@ -52,6 +52,7 @@ describe('RepositoryList', () => {
       // let repositoryItems;
       let firstRepositoryItem;
       let secondRepositoryItem;
+      let repoItems;
       beforeEach(() => {
         render(
           <RepositoryListContainer repositories={repositories} />
@@ -60,6 +61,7 @@ describe('RepositoryList', () => {
 
         [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
+        repoItems = [firstRepositoryItem, secondRepositoryItem];
         // console.log(firstRepositoryItem);
       });
       // screen.debug();
@@ -70,46 +72,58 @@ describe('RepositoryList', () => {
       const repoLanguages = repositories.edges.map(e => e.node.language);
 
       const forksCounts = repositories.edges.map(e => e.node.forksCount);
+      const starCounts = repositories.edges.map(e => e.node.stargazersCount);
+      const reviewsCounts = repositories.edges.map(e => e.node.reviewCount);
+      const ratingAverages = repositories.edges.map(e => e.node.ratingAverage);
 
-      describe('for first repositories list item', () => {
-        it('textual elements within header are rendered correctly', () => {
-          expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
-          expect(firstRepositoryItem).toHaveTextContent(repoDescriptions[0]);
-          expect(firstRepositoryItem).toHaveTextContent(repoLanguages[0]);
+      describe.only('for repositories list item', () => {
+        // can't use repoItems.length here, using hard coded value 2
+        for (let i = 0; i < 2; i++) {
+          describe(`for item ${i + 1}`, () => {
+            it('textual elements within header are rendered correctly', () => {
+              expect(repoItems[i]).toHaveTextContent(repoFullNames[i]);
+              expect(repoItems[i]).toHaveTextContent(repoDescriptions[i]);
+              expect(repoItems[i]).toHaveTextContent(repoLanguages[i]);
 
-        });
-        describe('repository info items are rendered correctly', () => {
-          let stars, forks, reviews, rating;
-          beforeEach(() => {
-            const infoItems = within(firstRepositoryItem).getAllByTestId('infoItem');
-            [stars, forks, reviews, rating] = infoItems;
-          });
+            });
+            describe('repository info items are rendered correctly', () => {
+              let stars, forks, reviews, rating;
+              beforeEach(() => {
+                const infoItems = within(repoItems[i]).getAllByTestId('infoItem');
+                [stars, forks, reviews, rating] = infoItems;
+              });
 
-          it.only('forks count', () => {
-            expect(firstRepositoryItem).toHaveTextContent('Forks');
-            expect(forks).toHaveTextContent('Forks');
-            const forkValue = within(forks).getByTestId('infoItemValue');
-            expect(forkValue).toHaveTextContent(truncateNumber(forksCounts[0]));
-          });
-          it('stargazers count', () => {
-            expect(0).toEqual(1);
-          });
+              it('forks count', () => {
+                expect(repoItems[i]).toHaveTextContent('Forks');
+                expect(forks).toHaveTextContent('Forks');
+                const forkValue = within(forks).getByTestId('infoItemValue');
+                expect(forkValue).toHaveTextContent(truncateNumber(forksCounts[i]));
+              });
 
-          it('rating average', () => {
-            expect(0).toEqual(1);
-          });
+              it('stargazers count', () => {
+                expect(repoItems[i]).toHaveTextContent('Stars');
+                expect(stars).toHaveTextContent('Stars');
+                const starValue = within(stars).getByTestId('infoItemValue');
+                expect(starValue).toHaveTextContent(truncateNumber(starCounts[i]));
 
-          it('review count', () => {
-            expect(0).toEqual(1);
+              });
+
+              it('rating average', () => {
+                expect(repoItems[i]).toHaveTextContent('Rating');
+                expect(rating).toHaveTextContent('Rating');
+                const ratingValue = within(rating).getByTestId('infoItemValue');
+                expect(ratingValue).toHaveTextContent(truncateNumber(ratingAverages[i]));
+              });
+
+              it('review count', () => {
+                expect(repoItems[i]).toHaveTextContent('Reviews');
+                expect(reviews).toHaveTextContent('Reviews');
+                const reviewValue = within(forks).getByTestId('infoItemValue');
+                expect(reviewValue).toHaveTextContent(truncateNumber(reviewsCounts[i]));
+              });
+            });
           });
-        });
-      });
-      describe('for second repositories list item', () => {
-        it('textual elements within header are rendered correctly', () => {
-          expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
-          expect(secondRepositoryItem).toHaveTextContent(repoDescriptions[1]);
-          expect(secondRepositoryItem).toHaveTextContent(repoLanguages[1]);
-        });
+        }
       });
     });
   });
