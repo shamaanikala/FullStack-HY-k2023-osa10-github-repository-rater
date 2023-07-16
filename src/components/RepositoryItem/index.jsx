@@ -14,10 +14,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const RepositoryItem = (props) => {
-  const repo = props.item;
+const RepositoryItem = ({ item, viewOne = false }) => {
+  const repo = item;
   // const viewOne = props.viewSingleRepository;
-  const viewOne = false;
   // const {
   //   fullName,
   //   description,
@@ -65,7 +64,7 @@ const RepositoryItem = (props) => {
       <RepositoryItemInfo repo={repo} />
       <Button
         style={styles.button}
-        onPress={() => console.log(`Open ${repo.fullName} in GitHub pressed!`)}
+        onPress={() => console.log(`Open ${repo.id} in GitHub pressed!`)}
         title="Open in GitHub"
       />
     </View>
