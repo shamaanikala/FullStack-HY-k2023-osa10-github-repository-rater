@@ -63,12 +63,20 @@ describe('RepositoryList', () => {
       console.log(repositories.edges[0].node.fullName);
 
       const repoFullNames = repositories.edges.map(e => e.node.fullName);
+      const repoDescriptions = repositories.edges.map(e => e.node.description);
+      const repoLanguages = repositories.edges.map(e => e.node.language);
 
       it('for first repositories list item', () => {
         expect(firstRepositoryItem).toHaveTextContent(repoFullNames[0]);
+        expect(firstRepositoryItem).toHaveTextContent(repoDescriptions[0]);
+        expect(firstRepositoryItem).toHaveTextContent(repoLanguages[0]);
+
       });
       it('for second repositories list item', () => {
         expect(secondRepositoryItem).toHaveTextContent(repoFullNames[1]);
+        expect(secondRepositoryItem).toHaveTextContent(repoDescriptions[1]);
+        expect(secondRepositoryItem).toHaveTextContent(repoLanguages[1]);
+
       });
     });
   });
