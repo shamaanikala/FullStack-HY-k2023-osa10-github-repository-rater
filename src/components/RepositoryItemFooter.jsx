@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const FooterInfoItem = ({ value, label }) => {
+const InfoItem = ({ value, label }) => {
   const renderValue = truncateNumber(value);
   return (
     <View style={styles.infoItemContainer}>
@@ -47,10 +47,10 @@ const FooterInfoItem = ({ value, label }) => {
 const RepositoryItemFooter = ({ stars, forks, reviews, rating }) => {
   return (
     <View style={styles.container}>
-      <FooterInfoItem label="Stars" value={stars} />
-      <FooterInfoItem label="Forks" value={forks} />
-      <FooterInfoItem label="Reviews" value={reviews} />
-      <FooterInfoItem label="Rating" value={rating} />
+      <InfoItem label="Stars" value={stars} />
+      <InfoItem label="Forks" value={forks} />
+      <InfoItem label="Reviews" value={reviews} />
+      <InfoItem label="Rating" value={rating} />
     </View>
   );
 };
