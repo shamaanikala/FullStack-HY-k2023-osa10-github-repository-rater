@@ -16,28 +16,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: theme.colors.primary,
   },
-  ratingNumberSmall: {
-    fontSize: 21,
+  ratingNumber: {
+    fontSize: 19,
     color: theme.colors.primary,
   },
-  ratingNumberLarge: {
-    fontSzie: 17,
-    color: theme.colors.primary,
-  }
 });
 
 const ReviewRating = ({ rating }) => {
-  // the container can handle three digits only
-  // => use truncated values when rating > 999
-  console.log(rating);
+  // The rating is a value between 0-100
   const ratingValue = truncateNumber(Number(rating));
   return (
     <View style={styles.container}>
-      <Text
-        fontWeight="bold"
-        style={(rating < 1000)
-          ? styles.ratingNumberSmall
-          : styles.ratingNumberLarge}>
+      <Text fontWeight="bold" style={styles.ratingNumber}>
         {ratingValue}
       </Text>
     </View>
