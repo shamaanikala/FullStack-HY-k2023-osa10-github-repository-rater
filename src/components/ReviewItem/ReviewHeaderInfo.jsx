@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 const ReviewItemHeaderInfo = ({ username, createdAt }) => {
   return (
     <View style={styles.container}>
-      <Text>{username}</Text>
+      <Text fontWeight="bold">{username}</Text>
       <Text>{createdAt}</Text>
     </View>
   );

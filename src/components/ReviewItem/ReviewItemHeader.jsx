@@ -1,5 +1,4 @@
 import { StyleSheet, View } from "react-native"
-import Text from "../Text";
 import ReviewRating from "./ReviewRating";
 import ReviewItemHeaderInfo from "./ReviewHeaderInfo";
 
