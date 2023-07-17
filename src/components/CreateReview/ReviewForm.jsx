@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
 const ReviewFormFields = ({ onSubmit }) => {
   return (
     <View style={styles.formContainer}>
-      <FormikTextInput style={styles.textInput} name="repoOwnerName" placeholder="Reposity Owner name" />
-      <FormikTextInput style={styles.textInput} name='repoName' placeholder="Reposity name" />
+      <FormikTextInput style={styles.textInput} name="ownerName" placeholder="Reposity Owner name" />
+      <FormikTextInput style={styles.textInput} name='repositoryName' placeholder="Reposity name" />
       <FormikTextInput style={styles.textInput} name='rating' placeholder="Rating between 0 and 100" />
       <FormikTextInput style={styles.textInput}
-        name="review"
+        name="text"
         multiline
         placeholder={`Type your repository\nreview here...`} />
       <Button
@@ -44,10 +44,10 @@ const ReviewFormFields = ({ onSubmit }) => {
 };
 
 const validationSchema = yup.object().shape({
-  repoOwnerName: yup
+  ownerName: yup
     .string()
     .required('Reposity owner username is required'),
-  repoName: yup
+  repositoryName: yup
     .string()
     .required('Repository name is required.'),
   rating: yup
@@ -56,7 +56,7 @@ const validationSchema = yup.object().shape({
     .min(0, 'Minimum rating value is ${min}')
     .max(100, 'Maximum rating value is ${max}')
     .required('Rating is required.'),
-  review: yup
+  text: yup
     .string(),
 });
 
