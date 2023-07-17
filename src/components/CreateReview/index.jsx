@@ -1,10 +1,30 @@
-import { View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import ReviewForm from "./ReviewForm";
 import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../../graphql/mutations";
+import { useState } from "react";
+import Text from "../Text";
+
+const styles = StyleSheet.create({
+  errorMessage: {
+    color: 'red',
+  },
+});
 
 const CreateReview = () => {
-  const [mutate, result] = useMutation(CREATE_REVIEW);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [mutate, result] = useMutation(CREATE_REVIEW, {
+    onError: error => {
+      console.log(error);
+      if (error.graphQLErrors) {
+        console.log(error.graphQLErrors[0].message);
+        setErrorMessage(error.graphQLErrors[0].message);
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 5000);
+      }
+    },
+  });
 
   const createReview = async (review) => {
     // const { ownerName, reposityName, rating, text } = review;
@@ -12,9 +32,10 @@ const CreateReview = () => {
   };
 
   const onSubmit = async (values) => {
-    console.log('create a new review pressed');
-    console.log(values);
-    await createReview({ review: values });
+    // console.log(values);
+    // cast rating to int
+    const review = { ...values, rating: parseInt(values.rating) };
+    await createReview({ review });
   };
 
   if (result) {
@@ -23,6 +44,11 @@ const CreateReview = () => {
 
   return (
     <View>
+      {errorMessage &&
+        <Text style={styles.errorMessage}>
+          {errorMessage}
+        </Text>
+      }
       <ReviewForm onSubmit={onSubmit} />
     </View>
   );
