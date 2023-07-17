@@ -14,8 +14,8 @@ const useRepository = (repositoryId) => {
   
   useEffect(() => {
     if (!loading && data) {
-      console.log('useRepo:useEffect:data: ',data);
-      console.log(data.repository.reviews);
+      // console.log('useRepo:useEffect:data: ',data);
+      // console.log(data.repository.reviews);
       setRepository(data.repository);
     }
   }, [data, loading]);

@@ -13,6 +13,7 @@ const SingleRepositoryViewContainer = ({ repository }) => {
 
 const ReviewItem = ({ review }) => {
   // sinlge review item
+  console.log(review);
 }
 
 const SingleRepositoryView = () => {
@@ -20,7 +21,10 @@ const SingleRepositoryView = () => {
 
   const { repository } = useRepository(repoId);
 
-  const reviews = [];
+  const reviews = repository
+    ? repository.reviews.edges.map(edge => edge.node)
+    : [];
+
   // return <SingleRepositoryViewContainer repository={repository} />;
   return (
     <FlatList
