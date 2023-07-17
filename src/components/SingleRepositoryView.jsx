@@ -9,7 +9,7 @@ const RepositoryViewContainer = ({ repository }) => {
   }
 };
 
-const RepositoryView = () => {
+const SingleRepositoryView = () => {
   const { repoId } = useParams();
 
   const { repository } = useRepository(repoId);
@@ -17,4 +17,4 @@ const RepositoryView = () => {
   return <RepositoryViewContainer repository={repository} />;
 };
 
-export default RepositoryView;
+export default SingleRepositoryView;
