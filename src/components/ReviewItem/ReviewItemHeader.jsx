@@ -1,5 +1,7 @@
 import { StyleSheet, View } from "react-native"
 import Text from "../Text";
+import ReviewRating from "./ReviewRating";
+import ReviewItemHeaderInfo from "./ReviewHeaderInfo";
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -12,9 +14,8 @@ const styles = StyleSheet.create({
 const ReviewItemHeader = ({ rating, username, createdAt }) => {
   return (
     <View style={styles.headerContainer}>
-      <Text>{rating}</Text>
-      <Text>{username}</Text>
-      <Text>{createdAt}</Text>
+      <ReviewRating rating={rating} />
+      <ReviewItemHeaderInfo username={username} createdAt={createdAt} />
     </View>
   );
 };
