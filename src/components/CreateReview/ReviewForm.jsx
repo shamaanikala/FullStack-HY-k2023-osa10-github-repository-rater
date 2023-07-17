@@ -60,16 +60,11 @@ const validationSchema = yup.object().shape({
     .string(),
 });
 
-const ReviewForm = () => {
-  const onSubmit = async (values) => {
-    console.log('create a new review pressed');
-    console.log(values);
-  };
-
+const ReviewForm = ({ onSubmit }) => {
   return (
     <View>
       <Formik
-        initialValues={{ repoOwnerName: '', repoName: '', rating: '', review: '' }}
+        initialValues={{ ownerName: '', repositoryName: '', rating: '', text: '' }}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
