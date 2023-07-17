@@ -10,10 +10,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     backgroundColor: theme.colors.contentBackground, //'ivory',
-    // paddingVertical: 15,
     paddingTop: 15,
     paddingStart: 20,
-    // marginVertical: 5,
   },
 })
 

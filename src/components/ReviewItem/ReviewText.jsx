@@ -10,10 +10,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     backgroundColor: theme.colors.contentBackground, //'ivory',
-    // paddingVertical: 15,
     paddingBottom: 15,
     paddingStart: 20,
-    // marginVertical: 5,
   },
   emptyBox: {
     // backgroundColor: 'coral',
@@ -26,7 +24,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 18,
     alignItems: 'flex-start',
     maxWidth: '89%',
-    // marginHorizontal: 15,
   },
 })
 const ReviewText = ({ text }) => {
@@ -34,7 +31,7 @@ const ReviewText = ({ text }) => {
     <View style={styles.container}>
       <View style={styles.emptyBox} ></View>
       <View style={styles.textBox}>
-        <Text>
+        <Text fontSize="subheading">
           {text}
         </Text>
       </View>
