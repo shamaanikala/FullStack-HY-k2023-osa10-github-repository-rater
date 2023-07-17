@@ -32,7 +32,9 @@ export const truncateNumber = value => {
     return nonScientificNotation(value, 6, 'M');
   } else if (value >= 1e9 && value < 1e12) {
     return nonScientificNotation(value, 9, 'G');
+  } else if (value >= 1e12 && value < 1e15) {
+    return nonScientificNotation(value, 12, 'T');
   } else {// (value < 1000) {
-    return value;
+    return "∞";
   } 
 };
