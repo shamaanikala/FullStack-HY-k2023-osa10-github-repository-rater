@@ -24,6 +24,29 @@ export const GET_REPOSITORY = gql`
   ${REPOSITORY_DATA}
 `;
 
+export const GET_REPO_REVIEWS = gql`
+  query ($repositoryId2: ID!) {
+    repository(id: $repositoryId2) {
+      id
+      fullName
+      reviews {
+        edges {
+          node {
+            id
+            text
+            rating
+            createdAt
+            user {
+              id
+              username
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
 // testing if this query works without 'query'
 // like within the Apollo Sandbox
 export const GET_SIGNED_USER = gql`
