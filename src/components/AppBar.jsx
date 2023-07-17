@@ -64,11 +64,14 @@ const AppBar = () => {
             <AppBarTab title="Sign In" />
           </Link>
         }
-        {signedUser &&
+        {signedUser && <>
+          <Pressable onPress={() => console.log('create new review pressed')}>
+            <AppBarTab title="Create a review" />
+          </Pressable>
           <Pressable onPress={handleSignOut}>
             <AppBarTab title="Sign Out" />
           </Pressable>
-        }
+        </>}
       </ScrollView>
     </View>
   );
