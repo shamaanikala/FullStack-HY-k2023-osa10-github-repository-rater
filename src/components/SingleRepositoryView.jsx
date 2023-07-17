@@ -2,7 +2,7 @@ import { useParams } from "react-router-native";
 import RepositoryItem from "./RepositoryItem";
 import useRepository from "../hooks/useRepository";
 import { FlatList, View, StyleSheet } from "react-native";
-import Text from "./Text";
+import ReviewItem from "./ReviewItem";
 
 const styles = StyleSheet.create({
   separator: {
@@ -21,23 +21,6 @@ const SingleRepositoryViewContainer = ({ repository }) => {
   }
 };
 
-const ReviewItem = ({ review }) => {
-  // sinlge review item
-  console.log(review);
-  return (
-    <View id="review-container">
-      <View id="review-header">
-        <Text>{review.rating}</Text>
-        <Text>{review.user.username}</Text>
-        <Text>{review.createdAt}</Text>
-      </View>
-      <View id="review-content">
-        <Text>{review.text}</Text>
-      </View>
-    </View>
-  )
-}
-
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepositoryView = () => {
@@ -49,7 +32,6 @@ const SingleRepositoryView = () => {
     ? repository.reviews.edges.map(edge => edge.node)
     : [];
 
-  // return <SingleRepositoryViewContainer repository={repository} />;
   return (
     <FlatList
       data={reviews}
