@@ -6,13 +6,14 @@ import theme from "../../theme";
 const styles = StyleSheet.create({
   headerContainer: {
     // backgroundColor: 'blanchedalmond',
-    borderWidth: 1,
+    // borderWidth: 1,
     flexDirection: 'row',
     flexGrow: 1,
     backgroundColor: theme.colors.contentBackground, //'ivory',
-    paddingVertical: 15,
+    // paddingVertical: 15,
+    paddingTop: 15,
     paddingStart: 20,
-    marginVertical: 5,
+    // marginVertical: 5,
   },
 })
 

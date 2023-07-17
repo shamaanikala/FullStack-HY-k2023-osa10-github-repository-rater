@@ -4,9 +4,9 @@ import ReviewText from "./ReviewText";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'chocolate',
-    borderWidth: 1.5,
-    padding: 3,
+    // backgroundColor: 'chocolate',
+    // borderWidth: 1.5,
+    // padding: 3,
   },
 });
 
