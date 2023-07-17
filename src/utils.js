@@ -40,3 +40,19 @@ export const truncateNumber = value => {
     return value;
   } 
 };
+
+
+export const formatDate = (date) => {
+  // https://github.com/shamaanikala/FullStack-HY-k2023-osa9/blob/master/patientor/src/utils.ts
+  // const dateObj = Date.parse(date); // doesn't work like this
+  const dateObj = new Date(date);
+  const dayOfMonth = dateObj.getDate();
+  const month = dateObj.getMonth() + 1; // starts from 0 => + 1
+  const year = dateObj.getFullYear();
+  // format to DD.MM.YYYY
+  const paddedDay = dayOfMonth.toString().padStart(2,'0');
+  const paddedMonth = month.toString().padStart(2, '0');
+  const payloadDayToYear = [paddedDay, paddedMonth, year];
+
+  return payloadDayToYear.join('.');
+};

@@ -1,5 +1,6 @@
 import { StyleSheet, View } from "react-native"
 import Text from "../Text";
+import { formatDate } from "../../utils";
 
 const styles = StyleSheet.create({
   container: {
@@ -9,10 +10,12 @@ const styles = StyleSheet.create({
 });
 
 const ReviewItemHeaderInfo = ({ username, createdAt }) => {
+  const formattedCreatedAt = formatDate(createdAt);
+
   return (
     <View style={styles.container}>
       <Text fontWeight="bold">{username}</Text>
-      <Text>{createdAt}</Text>
+      <Text>{formattedCreatedAt}</Text>
     </View>
   );
 };
