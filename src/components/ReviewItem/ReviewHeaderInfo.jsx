@@ -5,7 +5,12 @@ import { formatDate } from "../../utils";
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
-    backgroundColor: 'blueviolet',
+    // backgroundColor: 'blueviolet',
+    marginStart: 15,
+    marginRight: 20,
+    paddingHorizontal: 15,
+    alignItems: 'flex-start',
+
   },
 });
 
