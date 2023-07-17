@@ -65,9 +65,9 @@ const AppBar = () => {
           </Link>
         }
         {signedUser && <>
-          <Pressable onPress={() => console.log('create new review pressed')}>
+          <Link to="/newreview">
             <AppBarTab title="Create a review" />
-          </Pressable>
+          </Link>
           <Pressable onPress={handleSignOut}>
             <AppBarTab title="Sign Out" />
           </Pressable>
