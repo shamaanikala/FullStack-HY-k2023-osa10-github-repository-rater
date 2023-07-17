@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import Text from "../Text";
 import ReviewItemHeader from "./ReviewItemHeader";
+import ReviewText from "./ReviewText";
 
 const styles = StyleSheet.create({
   container: {
@@ -22,9 +22,7 @@ const ReviewItem = ({ review }) => {
   return (
     <View style={styles.container} id="review-container">
       <ReviewItemHeader {...headerItems} />
-      <View id="review-content">
-        <Text>{review.text}</Text>
-      </View>
+      <ReviewText text={review.text} />
     </View>
   )
 }
