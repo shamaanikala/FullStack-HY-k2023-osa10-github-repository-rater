@@ -29,7 +29,7 @@ const ReviewFormFields = ({ onSubmit }) => {
     <View style={styles.formContainer}>
       <FormikTextInput style={styles.textInput} name="ownerName" placeholder="Reposity Owner name" />
       <FormikTextInput style={styles.textInput} name='repositoryName' placeholder="Reposity name" />
-      <FormikTextInput style={styles.textInput} name='rating' placeholder="Rating between 0 and 100" />
+      <FormikTextInput style={styles.textInput} name="rating" placeholder="Rating between 0 and 100" />
       <FormikTextInput style={styles.textInput}
         name="text"
         multiline
