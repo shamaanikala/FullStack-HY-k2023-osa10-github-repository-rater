@@ -32,7 +32,7 @@ const CreateReview = () => {
   };
 
   const onSubmit = async (values) => {
-    // console.log(values);
+    console.log(values);
     // cast rating to int
     const review = { ...values, rating: parseInt(values.rating) };
     await createReview({ review });
