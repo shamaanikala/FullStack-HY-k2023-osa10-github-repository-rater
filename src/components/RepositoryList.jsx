@@ -1,6 +1,7 @@
 import { FlatList, View, StyleSheet } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../hooks/useRepositories";
+import { useState } from "react";
 
 const styles = StyleSheet.create({
   separator: {
@@ -29,7 +30,14 @@ export const RepositoryListContainer = ({ repositories }) => {
 
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories({ orderBy: 'RATING_AVERAGE' });
+  const [orderBy, setOrderBy] = useState();
+  const [orderDirection, setOrderDirection] = useState();
+
+  const variables = { orderBy, orderDirection };
+  console.log(variables);
+  const { repositories } = orderBy || orderDirection
+    ? useRepositories(variables)
+    : useRepositories();
 
   return <RepositoryListContainer repositories={repositories} />;
 };

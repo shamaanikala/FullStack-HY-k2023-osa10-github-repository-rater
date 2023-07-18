@@ -11,6 +11,7 @@ const defaultVariables = {
 const useRepositories = (variables = defaultVariables ) => {
   const [repositories, setRepositories] = useState();
 
+  console.log(`using variables: ${variables.orderBy} ${variables.orderDirection}`);
   const { data, error, loading, refetch } = useQuery(GET_REPOSITORIES, {
     variables,
     fetchPolicy: 'cache-and-network',
