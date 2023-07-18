@@ -16,7 +16,8 @@ const CreateReview = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
-  const [mutate, result] = useMutation(CREATE_REVIEW, {
+  // const [mutate, result] = useMutation(CREATE_REVIEW, {
+  const [mutate] = useMutation(CREATE_REVIEW, {
     onError: error => {
       console.log(error);
       if (error.graphQLErrors) {
@@ -28,8 +29,6 @@ const CreateReview = () => {
       }
     },
     onCompleted: data => {
-      console.log('data', data);
-      console.log(`createReview:mutation: navigating to /${data.createReview.repositoryId}`);
       navigate(`/${data.createReview.repositoryId}`);
     },
   });
@@ -40,15 +39,14 @@ const CreateReview = () => {
   };
 
   const onSubmit = async (values) => {
-    console.log(values);
     // cast rating to int
     const review = { ...values, rating: parseInt(values.rating) };
     await createReview({ review });
   };
 
-  if (result) {
-    console.log('result:', result);
-  }
+  // if (result) {
+  //   console.log('result:', result);
+  // }
 
   return (
     <View>
