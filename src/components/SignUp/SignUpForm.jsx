@@ -28,8 +28,8 @@ const SignUpFormFields = ({ onSubmit }) => {
   return (
     <View style={styles.formContainer}>
       <FormikTextInput style={styles.textInput} name="username" placeholder="Enter username" />
-      <FormikTextInput style={styles.textInput} name='password' placeholder="Enter password" />
-      <FormikTextInput style={styles.textInput} name="passwordConfirmation" placeholder="Confirm password" />
+      <FormikTextInput style={styles.textInput} name='password' placeholder="Enter password" secureTextEntry />
+      <FormikTextInput style={styles.textInput} name="passwordConfirmation" placeholder="Confirm password" secureTextEntry />
       <Button
         style={styles.button}
         onPress={onSubmit}
@@ -52,7 +52,8 @@ const validationSchema = yup.object().shape({
     .max(50, 'Password can only be ${max} characters long!'),
   passwordConfirmation: yup
     .string()
-    .required('New password must be given twice to confirm it!'),
+    .oneOf([yup.ref('password'), null], 'Confirm password')
+    .required('Enter new password again to confirm it'),
 });
 
 const initialValues = {
