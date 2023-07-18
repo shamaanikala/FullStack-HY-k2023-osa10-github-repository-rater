@@ -18,6 +18,17 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginBottom: 10,
   },
+  textInputMultiline: {
+    borderWidth: 1,
+    borderRadius: 3,
+    borderColor: theme.colors.textSecondary,
+    paddingStart: 5,
+    paddingVertical: 5,
+    marginVertical: 5,
+    marginBottom: 10,
+    minHeight: 100,
+    textAlignVertical: 'top',
+  },
   button: {
     backgroundColor: theme.colors.primary,
     borderRadius: 30,
@@ -30,7 +41,7 @@ const ReviewFormFields = ({ onSubmit }) => {
       <FormikTextInput style={styles.textInput} name="ownerName" placeholder="Reposity Owner name" />
       <FormikTextInput style={styles.textInput} name='repositoryName' placeholder="Reposity name" />
       <FormikTextInput style={styles.textInput} name="rating" placeholder="Rating between 0 and 100" />
-      <FormikTextInput style={styles.textInput}
+      <FormikTextInput style={styles.textInputMultiline}
         name="text"
         multiline
         placeholder={`Type your repository\nreview here...`} />
