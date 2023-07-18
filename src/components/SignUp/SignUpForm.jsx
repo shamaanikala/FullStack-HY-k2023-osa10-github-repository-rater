@@ -40,12 +40,15 @@ const SignUpFormFields = ({ onSubmit }) => {
 };
 
 const validationSchema = yup.object().shape({
-  ownerName: yup
+  username: yup
     .string()
-    .required('Reposity owner username is required'),
-  repositoryName: yup
+    .required('Username is required'),
+  password: yup
     .string()
-    .required('Repository name is required.'),
+    .required('Password is required'),
+  passwordConfirmation: yup
+    .string()
+    .required('New password must be given twice to confirm it!'),
 });
 
 const initialValues = {
@@ -60,7 +63,7 @@ const SignUpForm = ({ onSubmit }) => {
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
-      // validationSchema={validationSchema}
+        validationSchema={validationSchema}
       >
         {({ handleSubmit }) => <SignUpFormFields onSubmit={handleSubmit} />}
       </Formik>
