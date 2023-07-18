@@ -24,8 +24,6 @@ const RepositoryListContainer = ({ repositories, ...stateProps }) => {
       keyExtractor={item => item.id}
       ListHeaderComponent={() => <RepositoryListSortingPicker {...stateProps} />}
     // ListHeaderComponentStyle={styles.listHeader}
-
-    // other props
     />
   );
 };
