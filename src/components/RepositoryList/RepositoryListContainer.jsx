@@ -1,5 +1,6 @@
 import { FlatList, View, StyleSheet } from "react-native";
 import RepositoryItem from "../RepositoryItem";
+import RepositoryListSortingPicker from "./RepositoryListSortingPicker";
 
 const styles = StyleSheet.create({
   separator: {
@@ -21,6 +22,9 @@ const RepositoryListContainer = ({ repositories }) => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepositoryItem item={item} />}
       keyExtractor={item => item.id}
+      ListHeaderComponent={() => <RepositoryListSortingPicker />}
+    // ListHeaderComponentStyle={styles.listHeader}
+
     // other props
     />
   );
