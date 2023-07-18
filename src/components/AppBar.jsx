@@ -59,11 +59,14 @@ const AppBar = () => {
         <Link to="/">
           <AppBarTab title="Repositories" />
         </Link>
-        {!signedUser &&
+        {!signedUser && <>
           <Link to="/signin">
             <AppBarTab title="Sign In" />
           </Link>
-        }
+          <Link to="/signup">
+            <AppBarTab title="Sign Up" />
+          </Link>
+        </>}
         {signedUser && <>
           <Link to="/newreview">
             <AppBarTab title="Create a review" />
