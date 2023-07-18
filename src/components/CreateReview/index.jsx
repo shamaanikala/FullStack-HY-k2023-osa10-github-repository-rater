@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../../graphql/mutations";
 import { useState } from "react";
 import Text from "../Text";
+import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
   errorMessage: {
@@ -13,6 +14,8 @@ const styles = StyleSheet.create({
 
 const CreateReview = () => {
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
+
   const [mutate, result] = useMutation(CREATE_REVIEW, {
     onError: error => {
       console.log(error);
@@ -23,6 +26,11 @@ const CreateReview = () => {
           setErrorMessage(null);
         }, 5000);
       }
+    },
+    onCompleted: data => {
+      console.log('data', data);
+      console.log(`createReview:mutation: navigating to /${data.createReview.repositoryId}`);
+      navigate(`/${data.createReview.repositoryId}`);
     },
   });
 
