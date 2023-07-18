@@ -37,7 +37,7 @@ const SignUp = () => {
     },
     // let's try if variables can be passed here
     onCompleted: async (data, { variables }) => {
-      console.log('variables: ', variables);
+      // console.log('variables: ', variables);
       const { username, password } = variables.user;
       // console.log('onCompleted: ', username, password);
       try {
@@ -50,17 +50,12 @@ const SignUp = () => {
   });
 
   const createUser = async (user) => {
-    console.log('creating new user:');
-    console.log('--', user);
     await mutate({ variables: user });
   };
 
   const onSubmit = async (values) => {
-    console.log('SignUp:onSubmit:', values);
-    console.log('-- calling createUser({ user }) with:');
     const { username, password } = values;
     const user = { username, password }
-    console.log(user);
     await createUser({ user });
   };
 
