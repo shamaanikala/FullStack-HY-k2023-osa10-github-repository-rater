@@ -42,10 +42,14 @@ const SignUpFormFields = ({ onSubmit }) => {
 const validationSchema = yup.object().shape({
   username: yup
     .string()
-    .required('Username is required'),
+    .required('Username is required')
+    .min(5, 'Username must be at least ${min} characters long!')
+    .max(30, 'Username length can not exeed ${max} characters!'),
   password: yup
     .string()
-    .required('Password is required'),
+    .required('Password is required')
+    .min(5, 'Password must be at least ${min} characters long!')
+    .max(50, 'Password can only be ${max} characters long!'),
   passwordConfirmation: yup
     .string()
     .required('New password must be given twice to confirm it!'),
