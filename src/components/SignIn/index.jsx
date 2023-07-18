@@ -58,7 +58,7 @@ export const FormikSignInForm = ({ initialValues, onSubmit, validationSchema }) 
 
 export const initialValues = { username: '', password: '' };
 
-const MINIMUN_USERNAME_LENGTH = 3;
+const MINIMUN_USERNAME_LENGTH = 5;
 
 export const validationSchema = yup.object().shape({
   username: yup

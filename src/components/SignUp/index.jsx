@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState(null);
-  // const [signIn] = useSignIn();
+  const [signIn] = useSignIn();
   const navigate = useNavigate();
   const [mutate] = useMutation(CREATE_USER, {
     onError: error => {
@@ -35,9 +35,16 @@ const SignUp = () => {
         }, 5000);
       }
     },
-    onCompleted: async data => {
-      // data.createUser.username
-      console.log(data);
+    // let's try if variables can be passed here
+    onCompleted: async (data, { variables }) => {
+      console.log('variables: ', variables);
+      const { username, password } = variables.user;
+      // console.log('onCompleted: ', username, password);
+      try {
+        await signIn({ username, password }).catch(e => console.log(e.message));
+      } catch (e) {
+        console.log(e);
+      }
       navigate('/');
     },
   });
