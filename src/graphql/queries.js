@@ -2,17 +2,30 @@ import { gql } from "@apollo/client";
 import { REPOSITORY_DATA, REPO_WITH_REVIEW_DATA, REVIEW_DATA } from "./fragments";
 
 export const GET_REPOSITORIES = gql`
-  query {
-    repositories {
+  query Repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection) {
+    repositories(orderBy: $orderBy, orderDirection: $orderDirection) {
       edges {
         node {
-         ...RepositoryData 
+          ...RepositoryData
         }
       }
     }
   }
   ${REPOSITORY_DATA}
 `;
+
+// export const GET_REPOSITORIES = gql`
+//   query {
+//     repositories {
+//       edges {
+//         node {
+//          ...RepositoryData 
+//         }
+//       }
+//     }
+//   }
+//   ${REPOSITORY_DATA}
+// `;
 
 export const GET_REPOSITORY = gql`
   query ($repositoryId: ID!) {

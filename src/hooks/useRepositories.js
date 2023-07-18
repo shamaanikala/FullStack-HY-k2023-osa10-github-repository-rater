@@ -7,6 +7,10 @@ const useRepositories = () => {
   const [repositories, setRepositories] = useState();
 
   const { data, error, loading, refetch } = useQuery(GET_REPOSITORIES, {
+    variables: {
+      orderBy: 'CREATED_AT',
+      orderDirection: 'DESC'
+    },
     fetchPolicy: 'cache-and-network',
   });
 
