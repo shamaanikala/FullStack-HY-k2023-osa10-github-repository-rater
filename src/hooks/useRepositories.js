@@ -3,14 +3,16 @@ import { useQuery } from "@apollo/client";
 
 import { GET_REPOSITORIES } from "../graphql/queries";
 
-const useRepositories = () => {
+const defaultVariables = {
+  orderBy: 'CREATED_AT',
+  orderDirection: 'DESC'
+};
+
+const useRepositories = (variables = defaultVariables ) => {
   const [repositories, setRepositories] = useState();
 
   const { data, error, loading, refetch } = useQuery(GET_REPOSITORIES, {
-    variables: {
-      orderBy: 'CREATED_AT',
-      orderDirection: 'DESC'
-    },
+    variables,
     fetchPolicy: 'cache-and-network',
   });
 

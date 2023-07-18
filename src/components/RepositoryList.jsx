@@ -29,7 +29,7 @@ export const RepositoryListContainer = ({ repositories }) => {
 
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const { repositories } = useRepositories({ orderBy: 'RATING_AVERAGE' });
 
   return <RepositoryListContainer repositories={repositories} />;
 };
