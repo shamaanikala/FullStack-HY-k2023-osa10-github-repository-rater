@@ -16,7 +16,7 @@ const ReviewItem = ({ review, view }) => {
   // sinlge review item
   const headerItems = {
     rating: review.rating,
-    title: view === 'repository' ? review.user.username : review.repositoryId,
+    title: view === 'repository' ? review.user.username : review.repository.fullName,
     createdAt: review.createdAt,
   };
 
