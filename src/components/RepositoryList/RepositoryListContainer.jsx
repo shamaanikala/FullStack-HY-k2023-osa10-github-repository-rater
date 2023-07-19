@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
   separator: {
     height: 10,
   },
+  headerContainer: {
+    // backgroundColor: 'pink',
+    padding: 15,
+  },
 });
 
 const ItemSeparator = () => <View style={styles.separator} />;
@@ -27,7 +31,7 @@ const RepositoryListContainer = ({ repositories, ...stateProps }) => {
       // Do not use arrow function, but that seems to require to use class component 
       // https://aryan-mittal.medium.com/react-native-searchbar-in-flatlist-loses-focus-after-typing-239c84a2e7ca
       ListHeaderComponent={<RepositoryListHeaderContainer {...stateProps} />}
-    // ListHeaderComponentStyle={styles.listHeader}
+      ListHeaderComponentStyle={styles.headerContainer}
     />
   );
 };
