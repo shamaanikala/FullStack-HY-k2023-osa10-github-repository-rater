@@ -3,7 +3,6 @@ import Text from "../Text"
 import { useQuery } from "@apollo/client";
 import { GET_SIGNED_USER } from "../../graphql/queries";
 import ReviewItem from "../ReviewItem";
-// import { useEffect, useState } from "react";
 import NoReviewsView from "./NoReviewsView";
 
 const styles = StyleSheet.create({
@@ -11,8 +10,8 @@ const styles = StyleSheet.create({
     height: 10,
   },
   container: {
-    backgroundColor: 'pink',
-    padding: 15,
+    // backgroundColor: 'pink',
+    // padding: 15,
   },
 });
 
@@ -20,15 +19,11 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 
 const UserReviewView = () => {
-  // const [userInfo, setUserInfo] = useState({});
-  // const [userReviews, setUserReviews] = useState([]);
-
   const userQuery = useQuery(GET_SIGNED_USER, {
     variables: { includeReviews: true },
   });
 
   if (userQuery.loading) {
-    console.log('loading...');
     return (
       <View style={styles.container}>
         <Text>Loading user reviews...</Text>
@@ -36,35 +31,23 @@ const UserReviewView = () => {
     );
   }
 
-  // useEffect(() => {
-  //   if (!userQuery.loading) {
-  //     console.log('userQuery.data', userQuery.data);
-  //     const { username, reviews, ...rest } = userQuery.data.me;
-  //     setUserInfo({ username, id: rest.id });
-  //     const reviewNodes = reviews
-  //       ? reviews.edges.map(edge => edge.node)
-  //       : [];
-  //     setUserReviews(reviewNodes);
-  //   }
-  // }, [])
   let userReviews = [];
   let userInfo = {};
-  console.log(userQuery.data);
-  if (!userQuery.loading) {
+
+  if (!userQuery.loading && userQuery.data.me) {
     const { username, id, reviews } = userQuery.data.me;
+    // eslint-disable-next-line no-unused-vars
     userInfo = { username, id };
     userReviews = reviews
       ? reviews.edges.map(edge => edge.node)
       : [];
   }
-  console.log(userInfo);
-  console.log(userReviews);
 
   return (
     <View style={styles.container}>
-      <Text fontSize="heading" fontWeight="bold">
-        {userInfo.username} reviews:
-      </Text>
+      {/* <Text fontSize="heading" fontWeight="bold"> */}
+      {/* {userInfo.username} reviews: */}
+      {/* </Text> */}
       <FlatList
         data={userReviews}
         renderItem={({ item }) => <ReviewItem review={item} view="user" />}
