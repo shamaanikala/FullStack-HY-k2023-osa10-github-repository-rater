@@ -9,12 +9,14 @@ const RepositoryListFilter = (props) => {
     setSearchKeyword,
   } = props;
 
-  // const onChangeFilter = useDebouncedCallback(
-  //   value => setSearchKeyword(value),
-  //   500
-  // );
+  // this works only with onChange which is not usable 
+  // with <Searchbar>?
+  const onChangeFilter = useDebouncedCallback(
+    value => setSearchKeyword(value),
+    500
+  );
 
-  const onChangeFilter = value => setSearchKeyword(value);
+  // const onChangeFilter = value => setSearchKeyword(value);
 
   return (
     <View>
@@ -22,7 +24,7 @@ const RepositoryListFilter = (props) => {
       <Text>searchKeyword: {searchKeyword}</Text>
       <Searchbar
         placeholder="Filter repository list..."
-        onChangeText={onChangeFilter}
+        onChangeText={(text) => onChangeFilter(text)}
         value={searchKeyword}
       />
     </View>
