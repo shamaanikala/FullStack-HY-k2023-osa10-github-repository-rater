@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
   },
 })
 
-const ReviewItemHeader = ({ rating, username, createdAt }) => {
+const ReviewItemHeader = ({ rating, title, createdAt }) => {
   return (
     <View style={styles.headerContainer}>
       <ReviewRating rating={rating} />
-      <ReviewItemHeaderInfo username={username} createdAt={createdAt} />
+      <ReviewItemHeaderInfo title={title} createdAt={createdAt} />
     </View>
   );
 };

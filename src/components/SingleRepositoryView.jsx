@@ -35,7 +35,7 @@ const SingleRepositoryView = () => {
   return (
     <FlatList
       data={reviews}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => <ReviewItem review={item} view="repository" />}
       keyExtractor={({ id }) => id}
       ListHeaderComponent={() => <SingleRepositoryViewContainer repository={repository} />}
       ListHeaderComponentStyle={styles.listHeader}

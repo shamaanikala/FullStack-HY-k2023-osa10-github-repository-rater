@@ -3,7 +3,7 @@ import Text from "../Text"
 import { useQuery } from "@apollo/client";
 import { GET_SIGNED_USER } from "../../graphql/queries";
 import ReviewItem from "../ReviewItem";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import NoReviewsView from "./NoReviewsView";
 
 const styles = StyleSheet.create({
@@ -67,7 +67,7 @@ const UserReviewView = () => {
       </Text>
       <FlatList
         data={userReviews}
-        renderItem={({ item }) => <ReviewItem review={item} />}
+        renderItem={({ item }) => <ReviewItem review={item} view="user" />}
         keyExtractor={({ id }) => id}
         ItemSeparatorComponent={ItemSeparator}
         ListEmptyComponent={<NoReviewsView />}

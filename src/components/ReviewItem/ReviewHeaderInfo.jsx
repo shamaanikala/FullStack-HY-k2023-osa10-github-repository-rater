@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     alignItems: 'flex-start',
   },
-  username: {
+  title: {
 
   },
   date: {
@@ -21,12 +21,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReviewItemHeaderInfo = ({ username, createdAt }) => {
+const ReviewItemHeaderInfo = ({ title, createdAt }) => {
   const formattedCreatedAt = formatDate(createdAt);
 
   return (
     <View style={styles.container}>
-      <Text fontWeight="bold" fontSize="heading" style={styles.username}>{username}</Text>
+      <Text fontWeight="bold" fontSize="heading" style={styles.title}>{title}</Text>
       <Text color="textSecondary" style={styles.date}>{formattedCreatedAt}</Text>
     </View>
   );

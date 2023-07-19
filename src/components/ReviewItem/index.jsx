@@ -12,11 +12,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReviewItem = ({ review }) => {
+const ReviewItem = ({ review, view }) => {
   // sinlge review item
   const headerItems = {
     rating: review.rating,
-    username: review.user.username,
+    title: view === 'repository' ? review.user.username : review.repositoryId,
     createdAt: review.createdAt,
   };
 
