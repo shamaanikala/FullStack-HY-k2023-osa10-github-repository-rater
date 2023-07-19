@@ -22,32 +22,6 @@ export const GET_REPOSITORIES = gql`
   ${REPOSITORY_DATA}
 `;
 
-// export const GET_REPOSITORIES = gql`
-//   query Repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection) {
-//     repositories(orderBy: $orderBy, orderDirection: $orderDirection) {
-//       edges {
-//         node {
-//           ...RepositoryData
-//         }
-//       }
-//     }
-//   }
-//   ${REPOSITORY_DATA}
-// `;
-
-// export const GET_REPOSITORIES = gql`
-//   query {
-//     repositories {
-//       edges {
-//         node {
-//          ...RepositoryData 
-//         }
-//       }
-//     }
-//   }
-//   ${REPOSITORY_DATA}
-// `;
-
 export const GET_REPOSITORY = gql`
   query ($repositoryId: ID!) {
     repository(id: $repositoryId) {

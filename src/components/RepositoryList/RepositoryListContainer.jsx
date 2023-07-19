@@ -26,7 +26,6 @@ const RepositoryListContainer = ({ repositories, ...stateProps }) => {
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => <RepositoryItem item={item} />}
       keyExtractor={item => item.id}
-      // ListHeaderComponent={() => <RepositoryListSortingPicker {...stateProps} />}
       // ListHeaderComponent={() => <RepositoryListHeaderContainer {...stateProps} />}
       // Do not use arrow function, but that seems to require to use class component 
       // https://aryan-mittal.medium.com/react-native-searchbar-in-flatlist-loses-focus-after-typing-239c84a2e7ca
