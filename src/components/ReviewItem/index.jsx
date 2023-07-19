@@ -25,7 +25,7 @@ const ReviewItem = ({ review, view }) => {
     <View style={styles.container} id="review-container">
       <ReviewItemHeader {...headerItems} />
       <ReviewText text={review.text} />
-      <ReviewButtonFooterContainer />
+      {view === 'user' && <ReviewButtonFooterContainer />}
     </View>
   );
 };
