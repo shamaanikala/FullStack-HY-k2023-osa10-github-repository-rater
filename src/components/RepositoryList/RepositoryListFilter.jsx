@@ -1,7 +1,7 @@
 import { View } from "react-native"
 import Text from "../Text"
 import { Searchbar } from "react-native-paper";
-import { useDebouncedCallback } from 'use-debounce';
+import { useDebounce } from 'use-debounce';
 
 const RepositoryListFilter = (props) => {
   const {
@@ -9,22 +9,18 @@ const RepositoryListFilter = (props) => {
     setSearchKeyword,
   } = props;
 
-  // this works only with onChange which is not usable 
-  // with <Searchbar>?
-  const onChangeFilter = useDebouncedCallback(
-    value => setSearchKeyword(value),
-    500
-  );
+  const [debouncedValue] = useDebounce(searchKeyword, 400);
 
-  // const onChangeFilter = value => setSearchKeyword(value);
+  const onChangeFilter = value => setSearchKeyword(value);
 
   return (
     <View>
       <Text>Repository List Filter</Text>
       <Text>searchKeyword: {searchKeyword}</Text>
+      <Text>debouncedValue: {debouncedValue}</Text>
       <Searchbar
         placeholder="Filter repository list..."
-        onChangeText={(text) => onChangeFilter(text)}
+        onChangeText={onChangeFilter}
         value={searchKeyword}
       />
     </View>
