@@ -1,6 +1,7 @@
 import { View } from "react-native"
 import Text from "../Text"
 import { Searchbar } from "react-native-paper";
+import { useDebouncedCallback } from 'use-debounce';
 
 const RepositoryListFilter = (props) => {
   const {
@@ -8,7 +9,10 @@ const RepositoryListFilter = (props) => {
     setSearchKeyword,
   } = props;
 
-  const onChangeFilter = value => setSearchKeyword(value);
+  const onChangeFilter = useDebouncedCallback(
+    value => setSearchKeyword(value),
+    500
+  );
 
   return (
     <View>
