@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import ReviewItemHeader from "./ReviewItemHeader";
 import ReviewText from "./ReviewText";
 import theme from "../../theme";
+import ReviewButtonFooterContainer from './ReviewButtonFooterContainer';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,8 +25,9 @@ const ReviewItem = ({ review, view }) => {
     <View style={styles.container} id="review-container">
       <ReviewItemHeader {...headerItems} />
       <ReviewText text={review.text} />
+      <ReviewButtonFooterContainer />
     </View>
-  )
-}
+  );
+};
 
 export default ReviewItem;
