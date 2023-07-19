@@ -32,7 +32,7 @@ const DeleteReviewButton = ({ reviewId }) => {
     />
   );
 };
-const ReviewButtonFooterContainer = ({ repositoryId = 'dummy-repo-id', reviewId = 'dummy-review-id' }) => {
+const ReviewButtonFooterContainer = ({ repositoryId, reviewId }) => {
   return (
     <View style={styles.container}>
       <ViewRepositoryButton style={styles.button} repositoryId={repositoryId} />

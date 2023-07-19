@@ -21,11 +21,15 @@ const ReviewItem = ({ review, view }) => {
     createdAt: review.createdAt,
   };
 
+  const buttonProps = view === 'user'
+    ? { repositoryId: review.repository.id, reviewId: review.id }
+    : {};
+
   return (
     <View style={styles.container} id="review-container">
       <ReviewItemHeader {...headerItems} />
       <ReviewText text={review.text} />
-      {view === 'user' && <ReviewButtonFooterContainer />}
+      {view === 'user' && <ReviewButtonFooterContainer {...buttonProps} />}
     </View>
   );
 };

@@ -22,6 +22,7 @@ export const REVIEW_DATA = gql`
     createdAt
     repository {
       fullName
+      id
     }
     user {
       id
