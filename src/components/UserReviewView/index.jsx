@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     height: 10,
   },
   container: {
+    flex: 1,
     // backgroundColor: 'pink',
     // padding: 15,
   },
@@ -22,6 +23,8 @@ const UserReviewView = () => {
   const userQuery = useQuery(GET_SIGNED_USER, {
     variables: { includeReviews: true },
   });
+
+  // console.log('User Review', userQuery.loading);
 
   if (userQuery.loading) {
     return (
