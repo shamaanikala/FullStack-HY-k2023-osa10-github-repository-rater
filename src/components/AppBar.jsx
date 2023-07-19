@@ -7,6 +7,7 @@ import { useApolloClient, useQuery } from "@apollo/client";
 import { GET_SIGNED_USER } from "../graphql/queries";
 import { useEffect, useState } from "react";
 import { useAuthStorage } from "../hooks/useAuthStorage";
+import { useNavigate } from "react-router";
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +31,7 @@ const AppBar = () => {
   const [signedUser, setSignedUser] = useState(null);
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userQuery.loading) {
@@ -49,6 +51,7 @@ const AppBar = () => {
     setSignedUser(null);
     await authStorage.removeAccessToken();
     await apolloClient.resetStore();
+    navigate('/');
   };
 
   // <Pressable> doesn't work if <Link> is its child
