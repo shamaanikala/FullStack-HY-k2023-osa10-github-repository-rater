@@ -25,15 +25,14 @@ const DeleteReviewButton = ({ reviewId }) => {
     Alert.alert(
       'Delete review', // alert title
       'Are you sure you want to delete this review?', // alert message
-      [
+      [ // buttons array: cancel, confirm
         {
           text: 'Cancel',
-          onPress: () => Alert.alert('Cancel pressed'),
           style: 'cancel',
         },
         {
           text: 'Delete',
-          onPress: () => Alert.alert('Delete pressed {id}'),
+          onPress: () => Alert.alert(`Deleting review with id ${id}`),
           style: 'destructive',
         },
       ],
