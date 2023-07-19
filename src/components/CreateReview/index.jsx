@@ -32,6 +32,7 @@ const CreateReview = () => {
     onCompleted: data => {
       navigate(`/${data.createReview.repositoryId}`);
     },
+    // https://stackoverflow.com/questions/50084178/how-to-pass-a-variables-for-refetchqueries-in-apollo
     refetchQueries: [
       {
         query: GET_SIGNED_USER,
