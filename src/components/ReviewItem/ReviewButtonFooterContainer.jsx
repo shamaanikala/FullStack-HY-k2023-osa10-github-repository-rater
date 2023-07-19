@@ -1,4 +1,4 @@
-import { Button, View, StyleSheet } from "react-native"
+import { Button, View, StyleSheet, Alert } from "react-native"
 import { useNavigate } from "react-router";
 
 const styles = StyleSheet.create({
@@ -20,9 +20,29 @@ const ViewRepositoryButton = ({ repositoryId }) => {
   );
 };
 const DeleteReviewButton = ({ reviewId }) => {
+  const deleteAlert = (id) => {
+    console.log('Deleting review', id);
+    Alert.alert(
+      'Delete review', // alert title
+      'Are you sure you want to delete this review?', // alert message
+      [
+        {
+          text: 'Cancel',
+          onPress: () => Alert.alert('Cancel pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'Delete',
+          onPress: () => Alert.alert('Delete pressed {id}'),
+          style: 'destructive',
+        },
+      ],
+    );
+  };
+
   return (
     <Button
-      onPress={() => console.log(`Delete review: ${reviewId}`)}
+      onPress={() => deleteAlert(reviewId)}
       title="Delete review"
       color="red"
     />
