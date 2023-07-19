@@ -9,10 +9,12 @@ const RepositoryListFilter = (props) => {
     setSearchKeyword,
   } = props;
 
-  const onChangeFilter = useDebouncedCallback(
-    value => setSearchKeyword(value),
-    500
-  );
+  // const onChangeFilter = useDebouncedCallback(
+  //   value => setSearchKeyword(value),
+  //   500
+  // );
+
+  const onChangeFilter = value => setSearchKeyword(value);
 
   return (
     <View>
