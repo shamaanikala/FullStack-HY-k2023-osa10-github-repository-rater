@@ -5,11 +5,13 @@ import theme from "../../theme";
 import * as yup from 'yup';
 import useSignIn from "../../hooks/useSignIn";
 import { useNavigate } from "react-router-native";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import Text from "../Text";
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    // flexGrow: 1,
+    backgroundColor: theme.colors.contentBackground,
   },
   formContainer: {
     padding: 10,
@@ -27,6 +29,9 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: theme.colors.primary,
     borderRadius: 30,
+  },
+  errorMessage: {
+    color: 'red',
   },
 });
 
@@ -73,14 +78,19 @@ export const validationSchema = yup.object().shape({
 const SignIn = () => {
   const [signIn, result] = useSignIn();
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const onSubmit = async (values) => {
     const { username, password } = values;
 
     try {
-      await signIn({ username, password }).catch(e => console.log(e.message));
+      await signIn({ username, password })//.catch(e => console.log(e.message));
     } catch (e) {
       console.log(e);
+      setErrorMessage(e.message);
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 5000);
     }
   };
 
@@ -95,6 +105,11 @@ const SignIn = () => {
 
   return (
     <View style={styles.container}>
+      {errorMessage &&
+        <Text style={styles.errorMessage}>
+          {errorMessage}
+        </Text>
+      }
       <FormikSignInForm
         initialValues={initialValues}
         onSubmit={onSubmit}
