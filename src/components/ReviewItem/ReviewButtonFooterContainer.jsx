@@ -1,4 +1,5 @@
 import { Button, View, StyleSheet } from "react-native"
+import { useNavigate } from "react-router";
 
 const styles = StyleSheet.create({
   container: {
@@ -7,18 +8,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     paddingBottom: 15,
   },
-  button: {
-    // fontSize: theme.fontSizes.header,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-  },
 });
 
 const ViewRepositoryButton = ({ repositoryId }) => {
+  const navigate = useNavigate();
   return (
     <Button
-      onPress={() => console.log(`View repository: ${repositoryId}`)}
+      onPress={() => navigate(`/${repositoryId}`)}
       title="View repository"
     />
   );
@@ -33,10 +29,11 @@ const DeleteReviewButton = ({ reviewId }) => {
   );
 };
 const ReviewButtonFooterContainer = ({ repositoryId, reviewId }) => {
+
   return (
     <View style={styles.container}>
-      <ViewRepositoryButton style={styles.button} repositoryId={repositoryId} />
-      <DeleteReviewButton style={styles.button} reviewId={reviewId} />
+      <ViewRepositoryButton repositoryId={repositoryId} />
+      <DeleteReviewButton reviewId={reviewId} />
     </View>
   );
 };
