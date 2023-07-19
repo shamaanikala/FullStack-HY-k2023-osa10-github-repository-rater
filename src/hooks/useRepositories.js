@@ -5,13 +5,15 @@ import { GET_REPOSITORIES } from "../graphql/queries";
 
 const defaultVariables = {
   orderBy: 'CREATED_AT',
-  orderDirection: 'DESC'
+  orderDirection: 'DESC',
+  searchKeyword: undefined,
 };
 
 const useRepositories = (variables = defaultVariables ) => {
   const [repositories, setRepositories] = useState();
 
-  console.log(`using variables: ${variables.orderBy} ${variables.orderDirection}`);
+  // console.log(`using variables: ${variables.orderBy} ${variables.orderDirection}`);
+  console.log('useRepositories quering with variables:\n', variables);
   const { data, error, loading, refetch } = useQuery(GET_REPOSITORIES, {
     variables,
     fetchPolicy: 'cache-and-network',

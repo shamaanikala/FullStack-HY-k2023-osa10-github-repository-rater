@@ -8,7 +8,7 @@ const RepositoryList = () => {
   const [selectedOption, setSelectedOption] = useState('latest');
 
   const variables = { orderBy, orderDirection };
-  console.log(variables);
+
   const { repositories } = orderBy || orderDirection
     ? useRepositories(variables)
     : useRepositories();
