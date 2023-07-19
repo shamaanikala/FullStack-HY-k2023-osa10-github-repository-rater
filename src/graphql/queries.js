@@ -66,10 +66,27 @@ export const GET_REPO_WITH_REVIEWS = gql`
 // testing if this query works without 'query'
 // like within the Apollo Sandbox
 export const GET_SIGNED_USER = gql`
-  {
+  query getCurrentUser($includeReviews: Boolean = false) {
     me {
       id
       username
+      reviews @include(if: $includeReviews){
+        edges {
+          node {
+            ...ReviewData
+          }
+        }
+      }
     }
   }
+  ${REVIEW_DATA}
 `;
+
+// export const GET_SIGNED_USER = gql`
+//   {
+//     me {
+//       id
+//       username
+//     }
+//   }
+// `;
