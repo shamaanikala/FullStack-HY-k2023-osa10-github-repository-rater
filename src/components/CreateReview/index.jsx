@@ -5,6 +5,7 @@ import { CREATE_REVIEW } from "../../graphql/mutations";
 import { useState } from "react";
 import Text from "../Text";
 import { useNavigate } from "react-router-native";
+import { GET_SIGNED_USER } from "../../graphql/queries";
 
 const styles = StyleSheet.create({
   errorMessage: {
@@ -31,6 +32,12 @@ const CreateReview = () => {
     onCompleted: data => {
       navigate(`/${data.createReview.repositoryId}`);
     },
+    refetchQueries: [
+      {
+        query: GET_SIGNED_USER,
+        variables: { includeReviews: true },
+      }
+    ],
   });
 
   const createReview = async (review) => {
