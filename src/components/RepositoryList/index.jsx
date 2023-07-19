@@ -22,6 +22,8 @@ const RepositoryList = () => {
     setOrderDirection={setOrderDirection}
     selectedOption={selectedOption}
     setSelectedOption={setSelectedOption}
+    searchKeyword={searchKeyword}
+    setSearchKeyword={setSearchKeyword}
   />;
 };
 
