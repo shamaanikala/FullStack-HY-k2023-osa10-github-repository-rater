@@ -20,33 +20,44 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 
 const UserReviewView = () => {
-  const [userInfo, setUserInfo] = useState({});
-  const [userReviews, setUserReviews] = useState([]);
+  // const [userInfo, setUserInfo] = useState({});
+  // const [userReviews, setUserReviews] = useState([]);
 
   const userQuery = useQuery(GET_SIGNED_USER, {
     variables: { includeReviews: true },
   });
 
-  // if (userQuery.loading) {
-  //   console.log('loading...');
-  //   return (
-  //     <View style={styles.container}>
-  //       <Text>Loading user reviews...</Text>
-  //     </View>
-  //   );
-  // }
+  if (userQuery.loading) {
+    console.log('loading...');
+    return (
+      <View style={styles.container}>
+        <Text>Loading user reviews...</Text>
+      </View>
+    );
+  }
 
-  useEffect(() => {
-    if (!userQuery.loading) {
-      console.log('userQuery.data', userQuery.data);
-      const { username, reviews, ...rest } = userQuery.data.me;
-      setUserInfo({ username, id: rest.id });
-      const reviewNodes = reviews
-        ? reviews.edges.map(edge => edge.node)
-        : [];
-      setUserReviews(reviewNodes);
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!userQuery.loading) {
+  //     console.log('userQuery.data', userQuery.data);
+  //     const { username, reviews, ...rest } = userQuery.data.me;
+  //     setUserInfo({ username, id: rest.id });
+  //     const reviewNodes = reviews
+  //       ? reviews.edges.map(edge => edge.node)
+  //       : [];
+  //     setUserReviews(reviewNodes);
+  //   }
+  // }, [])
+  let userReviews = [];
+  let userInfo = {};
+  console.log(userQuery.data);
+  if (!userQuery.loading) {
+    const { username, id, reviews } = userQuery.data.me;
+    userInfo = { username, id };
+    userReviews = reviews
+      ? reviews.edges.map(edge => edge.node)
+      : [];
+  }
+  console.log(userInfo);
   console.log(userReviews);
 
   return (
