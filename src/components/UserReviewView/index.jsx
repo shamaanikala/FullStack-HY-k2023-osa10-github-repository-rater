@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // backgroundColor: 'pink',
-    // padding: 15,
   },
 });
 
@@ -48,9 +47,6 @@ const UserReviewView = () => {
 
   return (
     <View style={styles.container}>
-      {/* <Text fontSize="heading" fontWeight="bold"> */}
-      {/* {userInfo.username} reviews: */}
-      {/* </Text> */}
       <FlatList
         data={userReviews}
         renderItem={({ item }) =>

@@ -71,19 +71,7 @@ export const GET_REPO_WITH_REVIEWS = gql`
 // IF USING FRAGMENT IN FRAGMENT,
 // BOTH NEEDS TO BE REFERENCED HERE WITH
 // ${FRAG_NAME}
-// export const GET_REPO_WITH_REVIEWS = gql`
-//   query ($repositoryId: ID!) {
-//     repository(id: $repositoryId) {
-//       ...RepositoryDataWithReviews
-//     }
-//   }
-//   ${REPO_WITH_REVIEW_DATA}
-//   ${REVIEW_DATA}
-// `;
 
-
-// testing if this query works without 'query'
-// like within the Apollo Sandbox
 export const GET_SIGNED_USER = gql`
   query getCurrentUser(
       $includeReviews: Boolean = false,

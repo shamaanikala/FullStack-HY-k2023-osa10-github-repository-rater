@@ -11,7 +11,7 @@ const RepositoryList = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const variables = { orderBy, orderDirection, searchKeyword };
-  const first = 8; // first variable for infinite scrolling
+  const first = 8; // variable for infinite scrolling
 
   const { repositories, fetchMore } = orderBy || orderDirection || searchKeyword
     ? useRepositories({ first, ...variables })
