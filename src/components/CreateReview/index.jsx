@@ -42,7 +42,6 @@ const CreateReview = () => {
   });
 
   const createReview = async (review) => {
-    // const { ownerName, reposityName, rating, text } = review;
     await mutate({ variables: review });
   };
 
@@ -51,10 +50,6 @@ const CreateReview = () => {
     const review = { ...values, rating: parseInt(values.rating) };
     await createReview({ review });
   };
-
-  // if (result) {
-  //   console.log('result:', result);
-  // }
 
   return (
     <View>

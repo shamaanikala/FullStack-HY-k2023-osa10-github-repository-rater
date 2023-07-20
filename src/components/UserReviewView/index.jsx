@@ -46,7 +46,6 @@ const UserReviewView = () => {
       : [];
   }
 
-  console.log(userReviews);
   return (
     <View style={styles.container}>
       {/* <Text fontSize="heading" fontWeight="bold"> */}
