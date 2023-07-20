@@ -1,4 +1,3 @@
-// import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 
 import { GET_REPOSITORIES } from "../graphql/queries";
@@ -10,10 +9,6 @@ const defaultVariables = {
 };
 
 const useRepositories = (variables = defaultVariables ) => {
-  // const [repositories, setRepositories] = useState();
-
-  // console.log(`using variables: ${variables.orderBy} ${variables.orderDirection}`);
-  // console.log('useRepositories quering with variables:\n', variables);
   const { data, loading, fetchMore, ...result } = useQuery(GET_REPOSITORIES, {
     variables,
     fetchPolicy: 'cache-and-network',
@@ -35,13 +30,6 @@ const useRepositories = (variables = defaultVariables ) => {
     });
   };
 
-  // useEffect(() => {
-  //   if (!loading) {
-  //     setRepositories(data.repositories);
-  //   }
-  // }, [data, loading]);
-
-  // return { repositories, loading, error, refetch };
   return {
     repositories: data?.repositories,
     fetchMore: handleFetchMore,

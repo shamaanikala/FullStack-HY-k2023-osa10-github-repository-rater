@@ -34,7 +34,6 @@ const SingleRepositoryView = () => {
     : [];
 
   const onEndReach = () => {
-    console.log('review onEndReach');
     fetchMore();
   };
 
