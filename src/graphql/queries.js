@@ -6,13 +6,23 @@ export const GET_REPOSITORIES = gql`
       $orderBy: AllRepositoriesOrderBy,
       $orderDirection: OrderDirection,
       $searchKeyword: String   
+      $first: Int,
+      $after: String
     ) {
     repositories(
       orderBy: $orderBy,
       orderDirection: $orderDirection,
-      searchKeyword: $searchKeyword
+      searchKeyword: $searchKeyword,
+      first: $first,
+      after: $after
       ) {
+      pageInfo {
+        endCursor
+        startCursor
+        hasNextPage
+      }
       edges {
+        cursor
         node {
           ...RepositoryData
         }
@@ -81,12 +91,3 @@ export const GET_SIGNED_USER = gql`
   }
   ${REVIEW_DATA}
 `;
-
-// export const GET_SIGNED_USER = gql`
-//   {
-//     me {
-//       id
-//       username
-//     }
-//   }
-// `;
