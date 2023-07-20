@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { REPOSITORY_DATA, REPO_WITH_REVIEW_DATA, REVIEW_DATA } from "./fragments";
+import { PAGE_INFO, REPOSITORY_DATA, REPO_WITH_REVIEW_DATA, REVIEW_DATA } from "./fragments";
 
 export const GET_REPOSITORIES = gql`
   query Repositories(
@@ -17,9 +17,7 @@ export const GET_REPOSITORIES = gql`
       after: $after
       ) {
       pageInfo {
-        endCursor
-        startCursor
-        hasNextPage
+        ...PageInfo 
       }
       edges {
         cursor
@@ -29,6 +27,7 @@ export const GET_REPOSITORIES = gql`
       }
     }
   }
+  ${PAGE_INFO}
   ${REPOSITORY_DATA}
 `;
 

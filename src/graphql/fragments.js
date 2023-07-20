@@ -52,3 +52,11 @@ export const REPO_WITH_REVIEW_DATA = gql`
     }
   }
 `;
+
+export const PAGE_INFO = gql`
+  fragment PageInfo on PageInfo {
+    endCursor
+    startCursor
+    hasNextPage
+  }
+`;
