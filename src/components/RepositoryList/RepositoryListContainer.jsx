@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ repositories, ...stateProps }) => {
+const RepositoryListContainer = ({ repositories, onEndReach, ...stateProps }) => {
   // Get the node from the edge array
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -31,6 +31,8 @@ const RepositoryListContainer = ({ repositories, ...stateProps }) => {
       // https://aryan-mittal.medium.com/react-native-searchbar-in-flatlist-loses-focus-after-typing-239c84a2e7ca
       ListHeaderComponent={<RepositoryListHeaderContainer {...stateProps} />}
       ListHeaderComponentStyle={styles.headerContainer}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };

@@ -16,8 +16,13 @@ const RepositoryList = () => {
     ? useRepositories(variables)
     : useRepositories();
 
+  const onEndReach = () => {
+    console.log('You have reached the end of the list');
+  };
+
   return <RepositoryListContainer
     repositories={repositories}
+    onEndReach={onEndReach}
     setOrderBy={setOrderBy}
     setOrderDirection={setOrderDirection}
     selectedOption={selectedOption}
