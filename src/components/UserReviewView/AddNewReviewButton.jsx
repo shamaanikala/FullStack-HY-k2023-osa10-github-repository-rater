@@ -35,15 +35,20 @@ const styles = StyleSheet.create({
   },
   plusButton: {
     color: 'silver',
-
+  },
+  title: {
+    marginBottom: 15,
   },
 });
 
-const AddNewReviewFooter = () => {
+const AddNewReviewButton = () => {
   const navigate = useNavigate();
 
   return (
     <View style={styles.container}>
+      <Text fontWeight="bold" fontSize="heading" style={styles.title}>
+        Create new review
+      </Text>
       <View style={styles.footerContentContainer}>
         <Pressable onPress={() => navigate('/newreview')}>
           <View style={styles.plusButtonContainer}>
@@ -55,4 +60,4 @@ const AddNewReviewFooter = () => {
   );
 };
 
-export default AddNewReviewFooter;
+export default AddNewReviewButton;
