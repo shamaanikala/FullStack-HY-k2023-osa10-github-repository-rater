@@ -25,8 +25,6 @@ const UserReviewView = () => {
     fetchPolicy: 'cache-and-network',
   });
 
-  // console.log('User Review', userQuery.loading);
-
   if (userQuery.loading) {
     return (
       <View style={styles.container}>
@@ -54,7 +52,8 @@ const UserReviewView = () => {
       {/* </Text> */}
       <FlatList
         data={userReviews}
-        renderItem={({ item }) => <ReviewItem review={item} view="user" />}
+        renderItem={({ item }) =>
+          <ReviewItem review={item} view="user" userRefetch={userQuery.refetch} />}
         keyExtractor={({ id }) => id}
         ItemSeparatorComponent={ItemSeparator}
         ListEmptyComponent={<NoReviewsView />}

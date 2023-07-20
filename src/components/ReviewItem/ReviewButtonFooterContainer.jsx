@@ -21,7 +21,8 @@ const ViewRepositoryButton = ({ repositoryId }) => {
     />
   );
 };
-const DeleteReviewButton = ({ reviewId }) => {
+const DeleteReviewButton = ({ reviewId, userRefetch }) => {
+  // const navigate = useNavigate();
   const [mutate] = useMutation(DELETE_REVIEW, {
     onError: error => {
       console.log(error);
@@ -35,16 +36,21 @@ const DeleteReviewButton = ({ reviewId }) => {
         );
       }
     },
-    onCompleted: data => {
+    onCompleted: async data => {
       console.log(data);
       Alert.alert('Delete review success!', '', [{ text: 'Ok' }]);
+      await userRefetch({ includeReviews: true }); // probably useless with refetchQueries?
+      // navigate() // useEffect or navigate?
     },
     // https://stackoverflow.com/questions/50084178/how-to-pass-a-variables-for-refetchqueries-in-apollo
+    // this do not help now, the deleted review stays in the view
+    // until user changes the view 
     refetchQueries: [
       {
         query: GET_SIGNED_USER,
         variables: { includeReviews: true },
-        fetchPolicy: 'cache-and-network',
+        // fetchPolicy: 'cache-and-network', // doesn't help
+        // fetchPolicy: 'network-only', // no
       }
     ],
   });
@@ -87,12 +93,12 @@ const DeleteReviewButton = ({ reviewId }) => {
     />
   );
 };
-const ReviewButtonFooterContainer = ({ repositoryId, reviewId }) => {
+const ReviewButtonFooterContainer = ({ repositoryId, reviewId, userRefetch }) => {
 
   return (
     <View style={styles.container}>
       <ViewRepositoryButton repositoryId={repositoryId} />
-      <DeleteReviewButton reviewId={reviewId} />
+      <DeleteReviewButton reviewId={reviewId} userRefetch={userRefetch} />
     </View>
   );
 };

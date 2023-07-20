@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReviewItem = ({ review, view }) => {
+const ReviewItem = ({ review, view, userRefetch }) => {
   // sinlge review item
   const headerItems = {
     rating: review.rating,
@@ -22,7 +22,11 @@ const ReviewItem = ({ review, view }) => {
   };
 
   const buttonProps = view === 'user'
-    ? { repositoryId: review.repository.id, reviewId: review.id }
+    ? {
+      repositoryId: review.repository.id,
+      reviewId: review.id,
+      userRefetch,
+    }
     : {};
 
   return (
