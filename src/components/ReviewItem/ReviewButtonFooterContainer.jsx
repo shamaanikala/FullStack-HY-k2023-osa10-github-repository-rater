@@ -1,5 +1,7 @@
+import { useMutation } from "@apollo/client";
 import { Button, View, StyleSheet, Alert } from "react-native"
 import { useNavigate } from "react-router";
+import { DELETE_REVIEW, GET_SIGNED_USER } from "../../graphql/mutations";
 
 const styles = StyleSheet.create({
   container: {
@@ -20,6 +22,43 @@ const ViewRepositoryButton = ({ repositoryId }) => {
   );
 };
 const DeleteReviewButton = ({ reviewId }) => {
+  const [mutate] = useMutation(DELETE_REVIEW, {
+    onError: error => {
+      console.log(error);
+      if (error.graphQLErrors) {
+        console.log(error.graphQLErrors[0].message);
+        // setErrorMessage(error.graphQLErrors[0].message);
+        Alert.alert(
+          'Error',
+          `Unable to delete review: ${error.graphQLErrors[0].message}`,
+          [{ text: 'Ok', style: 'cancel' }],
+        );
+      }
+    },
+    onCompleted: data => {
+      console.log(data);
+      Alert.alert('Delete review success!', '', [{ text: 'Ok' }]);
+    },
+    // https://stackoverflow.com/questions/50084178/how-to-pass-a-variables-for-refetchqueries-in-apollo
+    refetchQueries: [
+      {
+        query: GET_SIGNED_USER,
+        variables: { includeReviews: true },
+        fetchPolicy: 'cache-and-network',
+      }
+    ],
+  });
+
+  const deleteReview = async (deleteReviewId) => {
+    console.log('deleteReview: deleting review with id', deleteReviewId);
+    console.log({ variables: deleteReviewId });
+    await mutate({ variables: deleteReviewId });
+  };
+
+  const handleDeleteReviewPress = async (id) => {
+    await deleteReview({ deleteReviewId: id });
+  };
+
   const deleteAlert = (id) => {
     console.log('Deleting review', id);
     Alert.alert(
@@ -32,7 +71,8 @@ const DeleteReviewButton = ({ reviewId }) => {
         },
         {
           text: 'Delete',
-          onPress: () => Alert.alert(`Deleting review with id ${id}`),
+          // onPress: () => Alert.alert(`Deleting review with id ${id}`),
+          onPress: () => handleDeleteReviewPress(id),
           style: 'destructive',
         },
       ],
