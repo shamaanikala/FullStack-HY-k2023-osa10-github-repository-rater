@@ -22,6 +22,7 @@ const ItemSeparator = () => <View style={styles.separator} />;
 const UserReviewView = () => {
   const userQuery = useQuery(GET_SIGNED_USER, {
     variables: { includeReviews: true },
+    fetchPolicy: 'cache-and-network',
   });
 
   // console.log('User Review', userQuery.loading);
