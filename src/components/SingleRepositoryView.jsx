@@ -24,13 +24,19 @@ const SingleRepositoryViewContainer = ({ repository }) => {
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const SingleRepositoryView = () => {
-  const { repoId } = useParams();
+  const { repositoryId } = useParams();
 
-  const { repository } = useRepository(repoId);
+  const first = 5; // default $first for infinity scrolling
+  const { repository, fetchMore } = useRepository({ repositoryId, first });
 
   const reviews = repository
     ? repository.reviews.edges.map(edge => edge.node)
     : [];
+
+  const onEndReach = () => {
+    console.log('review onEndReach');
+    fetchMore();
+  };
 
   return (
     <FlatList
@@ -40,6 +46,8 @@ const SingleRepositoryView = () => {
       ListHeaderComponent={() => <SingleRepositoryViewContainer repository={repository} />}
       ListHeaderComponentStyle={styles.listHeader}
       ItemSeparatorComponent={ItemSeparator}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     // ...
     />
   );
