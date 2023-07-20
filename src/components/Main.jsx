@@ -24,7 +24,7 @@ const Main = () => {
       <AppBar />
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
-        <Route path=":repoId" element={<SingleRepositoryView />} />
+        <Route path=":repositoryId" element={<SingleRepositoryView />} />
         <Route path="/signin" element={<SignIn />} exact />
         <Route path='/newreview' element={<CreateReview />} />
         <Route path='/signup' element={<SignUp />} />
