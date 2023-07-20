@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { PAGE_INFO, REPOSITORY_DATA, REPO_WITH_REVIEW_DATA, REVIEW_DATA } from "./fragments";
+import { PAGE_INFO, REPOSITORY_DATA, REVIEW_DATA } from "./fragments";
 
 export const GET_REPOSITORIES = gql`
   query Repositories(
@@ -41,52 +41,73 @@ export const GET_REPOSITORY = gql`
   ${REPOSITORY_DATA}
 `;
 
-export const GET_REPO_REVIEWS = gql`
-  query ($repositoryId: ID!) {
-    repository(id: $repositoryId) {
-      id
-      fullName
-      reviews {
+export const GET_REPO_WITH_REVIEWS = gql`
+  query (
+      $repositoryId: ID!,
+      $first: Int,
+      $after: String
+      ) {
+    repository(
+      id: $repositoryId) {
+      ...RepositoryData
+      reviews (first: $first, after: $after) {
         edges {
+          cursor
           node {
             ...ReviewData 
           }
         }
+        pageInfo {
+          ...PageInfo
+        }
       }
     }
   }
+  ${REPOSITORY_DATA}
   ${REVIEW_DATA}
+  ${PAGE_INFO}
 `;
 
 // IF USING FRAGMENT IN FRAGMENT,
 // BOTH NEEDS TO BE REFERENCED HERE WITH
 // ${FRAG_NAME}
-export const GET_REPO_WITH_REVIEWS = gql`
-  query ($repositoryId: ID!) {
-    repository(id: $repositoryId) {
-      ...RepositoryDataWithReviews
-    }
-  }
-  ${REPO_WITH_REVIEW_DATA}
-  ${REVIEW_DATA}
-`;
+// export const GET_REPO_WITH_REVIEWS = gql`
+//   query ($repositoryId: ID!) {
+//     repository(id: $repositoryId) {
+//       ...RepositoryDataWithReviews
+//     }
+//   }
+//   ${REPO_WITH_REVIEW_DATA}
+//   ${REVIEW_DATA}
+// `;
 
 
 // testing if this query works without 'query'
 // like within the Apollo Sandbox
 export const GET_SIGNED_USER = gql`
-  query getCurrentUser($includeReviews: Boolean = false) {
+  query getCurrentUser(
+      $includeReviews: Boolean = false,
+      $first: Int,
+      $after: String
+    ) {
     me {
       id
       username
-      reviews @include(if: $includeReviews){
+      reviews (first: $first, after: $after)
+        @include(if: $includeReviews)
+        {
         edges {
+          cursor
           node {
             ...ReviewData
           }
+        }
+        pageInfo {
+          ...PageInfo
         }
       }
     }
   }
   ${REVIEW_DATA}
+  ${PAGE_INFO}
 `;

@@ -31,27 +31,27 @@ export const REVIEW_DATA = gql`
   }
 `;
 
-export const REPO_WITH_REVIEW_DATA = gql`
-  fragment RepositoryDataWithReviews on Repository {
-    fullName
-    description
-    language
-    stargazersCount
-    forksCount
-    reviewCount
-    ratingAverage
-    ownerAvatarUrl
-    url
-    id
-    reviews {
-      edges {
-        node {
-          ...ReviewData
-        }
-      }
-    }
-  }
-`;
+// export const REPO_WITH_REVIEW_DATA = gql`
+//   fragment RepositoryDataWithReviews on Repository {
+//     fullName
+//     description
+//     language
+//     stargazersCount
+//     forksCount
+//     reviewCount
+//     ratingAverage
+//     ownerAvatarUrl
+//     url
+//     id
+//     reviews {
+//       edges {
+//         node {
+//           ...ReviewData
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export const PAGE_INFO = gql`
   fragment PageInfo on PageInfo {
