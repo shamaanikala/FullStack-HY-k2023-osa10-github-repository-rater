@@ -11,13 +11,15 @@ const RepositoryList = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
   const variables = { orderBy, orderDirection, searchKeyword };
+  const first = 8; // first variable for pagination
 
-  const { repositories } = orderBy || orderDirection || searchKeyword
-    ? useRepositories(variables)
-    : useRepositories();
+  const { repositories, fetchMore } = orderBy || orderDirection || searchKeyword
+    ? useRepositories({ first, ...variables })
+    : useRepositories({ first });
 
   const onEndReach = () => {
     console.log('You have reached the end of the list');
+    fetchMore();
   };
 
   return <RepositoryListContainer
