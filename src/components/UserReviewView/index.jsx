@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GET_SIGNED_USER } from "../../graphql/queries";
 import ReviewItem from "../ReviewItem";
 import NoReviewsView from "./NoReviewsView";
+import AddNewReviewFooter from "./AddNewReviewFooter";
 
 const styles = StyleSheet.create({
   separator: {
@@ -45,6 +46,7 @@ const UserReviewView = () => {
       : [];
   }
 
+  console.log(userReviews);
   return (
     <View style={styles.container}>
       {/* <Text fontSize="heading" fontWeight="bold"> */}
@@ -57,6 +59,7 @@ const UserReviewView = () => {
         keyExtractor={({ id }) => id}
         ItemSeparatorComponent={ItemSeparator}
         ListEmptyComponent={<NoReviewsView />}
+        ListFooterComponent={<AddNewReviewFooter />}
       />
     </View>
   );

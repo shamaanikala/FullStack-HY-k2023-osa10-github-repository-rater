@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
+  fontSizePlusButton: {
+    fontSize: 50,
+  }
 });
 
 const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
@@ -37,6 +40,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontSize === 'heading' && styles.fontSizeHeading,
     fontSize === 'header' && styles.fontSizeHeader,
+    fontSize === 'plusbutton' && styles.fontSizePlusButton,
     fontWeight === 'bold' && styles.fontWeightBold,
     style,
   ];
